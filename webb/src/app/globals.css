@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  /* Originalfärger från tradgardsform.se */
+  --color-forest: #3d5030;
+  --color-forest-light: #536941;
+  --color-sage: #536941;
+  --color-sage-hover: #3d5030;
+  --color-sage-light: #7a9160;
+  --color-sage-pale: #c8d9b3;
+  --color-cream: #F7F4EE;
+  --color-sand: #EAE0D0;
+  --color-sand-dark: #D6C9B4;
+
+  /* Rosa från logotypen */
+  --color-pink-brand: #D36FBA;
+  --color-pink-brand-light: #f0d4eb;
+  --color-pink-brand-pale: #faf0f8;
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-playfair);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F7F4EE;
+  color: #1a1a1a;
+}
