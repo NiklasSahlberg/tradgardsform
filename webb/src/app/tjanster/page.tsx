@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, ArrowRight, Phone, MapPin, Gift, Building2, Lightbulb, Wifi } from "lucide-react";
 
+const tjansterHeroImage =
+  "/bilder/galleri/" +
+  encodeURIComponent("3-TRÄDGÅRDSFORMS-TRÄDGÅRDSDESIGN-5.jpg");
+
 export const metadata: Metadata = {
   title: "Trädgårdsdesign & Tjänster Stockholm | Trädgårdsform",
   description:
@@ -146,49 +150,50 @@ const extras = [
 export default function TjansterPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative py-36 md:py-48 px-6 overflow-hidden">
+      {/* Hero — samma upplägg som startsidan */}
+      <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
         <Image
-          src="/bilder/NY-scaled.jpg"
-          alt="Professionell trädgårdsdesign i Stockholm"
+          src={tjansterHeroImage}
+          alt="Trädgårdsdesign av Trädgårdsform — exempel från genomfört projekt i Stockholm"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center brightness-[1.06]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <p className="font-sans text-white text-sm font-medium tracking-[0.2em] uppercase mb-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/28 via-black/12 to-black/32" />
+
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <p className="text-white text-base font-sans font-medium tracking-[0.2em] uppercase mb-6 [text-shadow:0_1px_10px_rgba(0,0,0,0.65)]">
             Våra tjänster
           </p>
-          <h1 className="font-heading text-4xl md:text-6xl text-white leading-tight mb-6">
+          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 [text-shadow:0_2px_16px_rgba(0,0,0,0.75)]">
             Trädgårdsdesign med <em>fasta priser</em>
           </h1>
-          <p className="font-sans text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.8)]">
             Vi erbjuder allt från en enkel rådgivning till en komplett trädgårdsplanering.
             Du väljer den nivå som passar dig — alltid med tydliga priser från start.
           </p>
-        </div>
-      </section>
 
-      {/* Prislista intro */}
-      <section className="bg-cream py-14 px-6 border-b border-sand-dark">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="font-sans text-zinc-500 text-sm mb-1">Alla priser gäller</p>
-            <p className="font-sans text-zinc-700 font-medium">
-              Inkl. moms · Tomter upp till 1 000 kvm · Stockholm · Fr.o.m. 2025-01-23
-            </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/boka-hembesok"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium text-base tracking-wide hover:bg-forest transition-all hover:scale-105 shadow-lg"
+            >
+              Intresseanmälan
+              <ArrowRight size={18} />
+            </Link>
+            <Link
+              href="#radgivning"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 text-white font-medium text-base tracking-wide hover:bg-white/20 transition-all"
+            >
+              Se paketen
+            </Link>
           </div>
-          <div className="flex items-center gap-3">
-            <MapPin size={18} className="text-sage flex-shrink-0" />
-            <p className="font-sans text-zinc-600 text-sm">
-              Andra storlekar eller lägen?{" "}
-              <Link href="/kontakta-oss" className="text-sage font-medium hover:text-forest underline underline-offset-2">
-                Begär offert
-              </Link>
-            </p>
-          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60">
+          <span className="text-xs font-sans tracking-widest uppercase">Scrolla</span>
+          <div className="w-px h-10 bg-white/30 animate-pulse" />
         </div>
       </section>
 
@@ -265,6 +270,27 @@ export default function TjansterPage() {
             </div>
           ))}
         </div>
+
+        {/* Prisinfo — under alla paket */}
+        <div className="max-w-7xl mx-auto mt-16 pt-12 border-t border-sand-dark">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <p className="font-sans text-zinc-500 text-sm mb-1">Alla priser gäller</p>
+              <p className="font-sans text-zinc-700 font-medium">
+                Inkl. moms · Tomter upp till 1 000 kvm · Stockholm · Fr.o.m. 2025-01-23
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <MapPin size={18} className="text-sage flex-shrink-0" />
+              <p className="font-sans text-zinc-600 text-sm">
+                Andra storlekar eller lägen?{" "}
+                <Link href="/kontakta-oss" className="text-sage font-medium hover:text-forest underline underline-offset-2">
+                  Begär offert
+                </Link>
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Övriga tjänster */}
@@ -313,7 +339,7 @@ export default function TjansterPage() {
             Osäker på vilket paket som <em>passar dig</em>?
           </h2>
           <p className="font-sans text-white/70 text-lg leading-relaxed">
-            Boka ett kostnadsfritt hembesök i Stockholm — så hjälper Susanne dig att
+            Gör en intresseanmälan — så hjälper Susanne dig att
             välja rätt nivå utifrån dina behov och din budget.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
@@ -321,7 +347,7 @@ export default function TjansterPage() {
               href="/boka-hembesok"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium hover:bg-sage-light hover:text-forest transition-all hover:scale-105"
             >
-              Boka hembesök
+              Intresseanmälan
               <ArrowRight size={18} />
             </Link>
             <a

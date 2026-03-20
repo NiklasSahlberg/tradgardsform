@@ -22,7 +22,7 @@ export default function CTABanner() {
           Förverkliga din <em>trädgårdsdröm</em> i år
         </h2>
         <p className="font-sans text-white/70 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-          Boka ett kostnadsfritt hembesök och ta första steget mot en trädgård
+          Gör en intresseanmälan och ta första steget mot en trädgård
           du älskar att vara i.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -30,7 +30,7 @@ export default function CTABanner() {
             href="/boka-hembesok"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium text-base tracking-wide hover:bg-sage-light hover:text-forest transition-all hover:scale-105 shadow-lg"
           >
-            Boka kostnadsfritt hembesök
+            Intresseanmälan
             <ArrowRight size={18} />
           </Link>
           <a

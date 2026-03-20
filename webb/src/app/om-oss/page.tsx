@@ -161,7 +161,7 @@ export default function OmOssPage() {
             Vill du träffa <em>Susanne</em>?
           </h2>
           <p className="font-sans text-white/70 text-lg leading-relaxed">
-            Boka ett kostnadsfritt hembesök i Stockholm och ta första steget mot
+            Gör en intresseanmälan och ta första steget mot
             din drömträdgård.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
@@ -169,7 +169,7 @@ export default function OmOssPage() {
               href="/boka-hembesok"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium hover:bg-sage-light hover:text-forest transition-all hover:scale-105"
             >
-              Boka hembesök
+              Intresseanmälan
               <ArrowRight size={18} />
             </Link>
             <Link

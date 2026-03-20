@@ -4,8 +4,8 @@ import { Award, Leaf } from "lucide-react";
 
 export default function About() {
   return (
-    <section className="bg-cream py-24 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="bg-cream px-6 pt-6 pb-20 md:py-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
         <div className="relative">
           <div className="relative h-[360px] md:h-[560px] rounded-2xl overflow-hidden shadow-xl">
             <Image

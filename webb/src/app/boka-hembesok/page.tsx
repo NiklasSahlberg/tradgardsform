@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle, ArrowLeft } from "lucide-react";
-import type { Metadata } from "next";
 
 const inputClass =
   "w-full px-4 py-3 rounded-xl border border-sand-dark bg-cream font-sans text-sm text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-sage/40 focus:border-sage transition";
@@ -58,8 +57,8 @@ export default function BokaHembesokPage() {
                 Tack, vi hör av oss!
               </h1>
               <p className="font-sans text-zinc-600 text-lg max-w-md leading-relaxed">
-                Susanne återkommer inom kort för att boka in ett kostnadsfritt
-                hembesök hos dig.
+                Susanne återkommer inom kort för att följa upp din
+                intresseanmälan och boka in ett kostnadsfritt hembesök hos dig.
               </p>
               <Link
                 href="/"
@@ -76,12 +75,12 @@ export default function BokaHembesokPage() {
                   Kostnadsfritt inom Stockholm
                 </p>
                 <h1 className="font-heading text-4xl md:text-5xl text-forest leading-tight mb-4">
-                  Boka hembesök
+                  Intresseanmälan
                 </h1>
                 <p className="font-sans text-zinc-600 leading-relaxed">
-                  Fyll i formuläret nedan så kontaktar Susanne dig för att boka
-                  in ett kostnadsfritt hembesök. Ha gärna en aktuell tomtkarta
-                  tillgänglig till mötet.
+                  Fyll i formuläret nedan så kontaktar Susanne dig med anledning
+                  av din intresseanmälan och bokar in ett kostnadsfritt
+                  hembesök. Ha gärna en aktuell tomtkarta tillgänglig till mötet.
                 </p>
               </div>
 
@@ -169,7 +168,7 @@ export default function BokaHembesokPage() {
                   disabled={loading}
                   className="w-full py-4 rounded-full bg-sage text-white font-medium font-sans text-base hover:bg-forest transition-all hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm mt-2"
                 >
-                  {loading ? "Skickar..." : "Skicka bokning"}
+                  {loading ? "Skickar..." : "Skicka intresseanmälan"}
                 </button>
 
                 <p className="font-sans text-xs text-zinc-400 text-center">

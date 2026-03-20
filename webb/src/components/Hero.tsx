@@ -34,7 +34,7 @@ export default function Hero() {
             href="/boka-hembesok"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium text-base tracking-wide hover:bg-forest transition-all hover:scale-105 shadow-lg"
           >
-            Boka kostnadsfritt hembesök
+            Intresseanmälan
             <ArrowRight size={18} /> 
           </Link> 
           <Link 
@@ -46,7 +46,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/60">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60">
         <span className="text-xs font-sans tracking-widest uppercase">Scrolla</span>
         <div className="w-px h-10 bg-white/30 animate-pulse" />
       </div>

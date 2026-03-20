@@ -23,13 +23,16 @@ export default function Footer() {
     <footer className="bg-forest text-white/70 font-sans">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="flex flex-col gap-5">
-          <Image
-            src="/bilder/logo_web-250x89.png"
-            alt="Trädgårdsform logotyp"
-            width={160}
-            height={57}
-            className="h-10 w-auto"
-          />
+          <Link href="/" className="inline-flex w-fit">
+            <Image
+              src="/bilder/galleri/logo_web-removebg-preview.png"
+              alt="Trädgårdsform logotyp"
+              width={220}
+              height={79}
+              quality={100}
+              className="h-14 w-auto object-contain md:h-16 brightness-110 contrast-110 saturate-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+            />
+          </Link>
           <p className="text-sm leading-relaxed">
             Diplomerad trädgårdsdesigner och trädgårdsarkitekt i Stockholm.
             Fasta priser och kostnadsfria hembesök.
