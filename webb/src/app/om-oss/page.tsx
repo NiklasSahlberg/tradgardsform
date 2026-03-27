@@ -49,26 +49,39 @@ const values = [
 export default function OmOssPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-forest pt-28 md:pt-40 pb-16 md:pb-24 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="flex flex-col gap-6">
-            <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase">
+      {/* Hero med bakgrundsbild — samma höjd som övriga heroes (viewport / min 640px) */}
+      <section className="relative min-h-screen min-h-[640px] flex items-center overflow-hidden px-6 py-24 md:py-16 lg:py-0">
+        <Image
+          src="/bilder/NY-scaled.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Mörk gradient så text och porträtt läses tydligt */}
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/55 to-forest/70 z-[1]"
+          aria-hidden
+        />
+        <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="flex flex-col gap-7 md:gap-8 text-center lg:text-left">
+            <p className="font-sans text-pink-brand text-base md:text-lg font-medium tracking-[0.2em] uppercase">
               Om Trädgårdsform
             </p>
-            <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl text-white leading-tight">
+            <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.35)]">
               Susanne Andersson — <em>trädgårdsdesigner</em>
             </h1>
-            <p className="font-sans text-white/70 text-lg leading-relaxed">
+            <p className="font-sans text-white/90 text-xl md:text-2xl leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.4)] max-w-2xl mx-auto lg:mx-0">
               Med passion för trädgårdar och ett skarpt öga för design hjälper
               Susanne dig att förverkliga din trädgårdsdröm — med fasta priser
               och ett personligt bemötande.
             </p>
-            <blockquote className="border-l-4 border-pink-brand pl-5 py-1 mt-2">
-              <p className="font-heading text-xl text-pink-brand italic leading-snug">
-                "Jag brinner för att mina kunder ska kunna uppnå sin trädgårdsdröm."
+            <blockquote className="mt-2 max-w-2xl mx-auto lg:mx-0 space-y-4">
+              <p className="font-sans text-white/90 text-xl md:text-2xl leading-relaxed italic [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]">
+                &ldquo;Jag brinner för att mina kunder ska kunna uppnå sin trädgårdsdröm.&rdquo;
               </p>
-              <footer className="font-sans text-pink-brand text-sm mt-2">
+              <footer className="font-sans text-white/90 text-xl md:text-2xl leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]">
                 — Susanne Andersson
               </footer>
             </blockquote>
@@ -79,7 +92,7 @@ export default function OmOssPage() {
               alt="Susanne Andersson, trädgårdsdesigner i Stockholm"
               width={400}
               height={600}
-              className="rounded-2xl shadow-2xl object-cover"
+              className="rounded-2xl shadow-2xl object-cover ring-2 ring-white/20"
               priority
             />
           </div>

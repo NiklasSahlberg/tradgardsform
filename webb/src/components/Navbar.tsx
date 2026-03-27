@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
+const LOGO_ON_HERO = "/bilder/galleri/logo_web-removebg-preview.png";
+const LOGO_SCROLLED = "/bilder/galleri/logo_web.png";
+
 const links = [
   { href: "/", label: "Hem" },
   { href: "/tjanster", label: "Tjänster" },
@@ -27,20 +30,23 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-cream/95 backdrop-blur-sm shadow-sm"
+          ? "bg-white/98 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.06),0_4px_24px_-4px_rgba(0,0,0,0.08)]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-18 py-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/bilder/galleri/logo_web-removebg-preview.png"
+            key={scrolled ? "scrolled" : "hero"}
+            src={scrolled ? LOGO_SCROLLED : LOGO_ON_HERO}
             alt="Trädgårdsform logotyp"
             width={220}
             height={79}
             quality={100}
-            className={`h-14 w-auto md:h-16 brightness-110 contrast-110 saturate-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] ${
-              scrolled ? "" : "drop-shadow-[0_1px_2px_rgba(255,255,255,0.35)]"
+            className={`h-14 w-auto md:h-16 transition-opacity duration-300 ${
+              scrolled
+                ? ""
+                : "brightness-110 contrast-110 saturate-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] drop-shadow-[0_1px_2px_rgba(255,255,255,0.35)]"
             }`}
           />
         </Link>
@@ -79,7 +85,13 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-cream border-t border-sand-dark">
+        <div
+          className={`md:hidden border-t ${
+            scrolled
+              ? "bg-white border-sand-dark/20"
+              : "bg-cream border-sand-dark"
+          }`}
+        >
           <nav className="flex flex-col px-6 py-4 gap-4">
             {links.map((link) => (
               <Link

@@ -6,8 +6,10 @@ import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Kontakta oss | Trädgårdsform Stockholm",
   description:
-    "Kontakta Trädgårdsform för trädgårdsdesign i Stockholm. Telefon, e-post och kostnadsfritt hembesök inom Stockholm.",
+    "Kontakta Trädgårdsform för trädgårdsdesign i Stockholm. Gustav Trolles väg 11, Järfälla. Telefon, e-post och kostnadsfritt hembesök inom Stockholm.",
 };
+
+const ADDRESS_LINE = "Gustav Trolles väg 11, 176 76 Järfälla";
 
 const contactInfo = [
   {
@@ -35,6 +37,8 @@ const contactInfo = [
     href: null,
   },
 ];
+
+const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(ADDRESS_LINE)}&hl=sv&z=16&output=embed`;
 
 export default function KontaktPage() {
   return (
@@ -108,6 +112,9 @@ export default function KontaktPage() {
                     {href ? (
                       <a
                         href={href}
+                        {...(href.startsWith("http")
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
                         className="font-sans text-sm sm:text-base md:text-lg text-white font-semibold leading-snug hover:text-white/95 transition-colors break-words [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]"
                       >
                         {value}
@@ -145,6 +152,9 @@ export default function KontaktPage() {
                   {href ? (
                     <a
                       href={href}
+                      {...(href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="font-sans text-base xl:text-lg text-white font-semibold leading-snug hover:text-white/95 whitespace-nowrap [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]"
                     >
                       {value}
@@ -174,7 +184,7 @@ export default function KontaktPage() {
               Stockholm & Mälardalen
             </h2>
             <p className="font-sans text-zinc-600 text-sm md:text-base leading-relaxed">
-              Kontor i Järfälla. Hembesök inom Stockholm är kostnadsfritt — för andra orter,{" "}
+              Kontor: {ADDRESS_LINE}. Verksamhet i Stockholm &amp; Mälardalen. Hembesök inom Stockholm är kostnadsfritt — för andra orter,{" "}
               <a
                 href="mailto:info@tradgardsform.se"
                 className="text-sage font-medium underline underline-offset-2 hover:text-forest"
@@ -186,14 +196,14 @@ export default function KontaktPage() {
           </div>
           <div className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-sand-dark/30 h-72 md:h-80">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d130366.82!2d17.8!3d59.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9f5a4ff49793%3A0x7af7a669efaf2cd4!2sJ%C3%A4rf%C3%A4lla!5e0!3m2!1ssv!2sse!4v1234567890"
+              src={mapEmbedSrc}
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Trädgårdsform — Järfälla, Stockholm"
+              title={`Trädgårdsform — ${ADDRESS_LINE}`}
             />
           </div>
         </div>
