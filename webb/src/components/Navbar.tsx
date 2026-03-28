@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -20,6 +20,8 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
+  const [menuEntered, setMenuEntered] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,14 +30,28 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useLayoutEffect(() => {
+    if (open) {
+      setMenuMounted(true);
+      setMenuEntered(false);
+      const id = requestAnimationFrame(() => {
+        requestAnimationFrame(() => setMenuEntered(true));
+      });
+      return () => cancelAnimationFrame(id);
+    }
+    setMenuEntered(false);
+    const t = window.setTimeout(() => setMenuMounted(false), 320);
+    return () => window.clearTimeout(t);
+  }, [open]);
+
   useEffect(() => {
-    if (!open) return;
+    if (!menuMounted) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
-  }, [open]);
+  }, [menuMounted]);
 
   useEffect(() => {
     if (!open) return;
@@ -112,11 +128,13 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobil: fullskärmsmeny */}
-      {open && (
+      {/* Mobil: fullskärmsmeny glider in från höger */}
+      {menuMounted && (
         <div
           id="mobile-menu-overlay"
-          className="md:hidden fixed inset-0 z-[100] flex flex-col bg-cream min-h-dvh"
+          className={`md:hidden fixed inset-0 z-[100] flex flex-col bg-cream min-h-dvh w-full shadow-[-12px_0_40px_-8px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform ${
+            menuEntered ? "translate-x-0" : "translate-x-full pointer-events-none"
+          }`}
           role="dialog"
           aria-modal="true"
           aria-label="Huvudmeny"
@@ -132,39 +150,39 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav
-            className="flex-1 flex flex-col justify-center items-center gap-1 px-8"
-            aria-label="Primär navigering"
-          >
-            {links.map((link) => {
-              const active = linkIsActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`w-full max-w-sm text-center py-5 text-xl tracking-wide transition-colors border-b border-sand-dark/15 last:border-0 text-black ${
-                    active
-                      ? "font-semibold"
-                      : "font-medium hover:text-black/70"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <div
-            className="shrink-0 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4"
-          >
-            <Link
-              href="/boka-hembesok"
-              onClick={() => setOpen(false)}
-              className="block w-full max-w-sm mx-auto text-center px-8 py-4 rounded-full bg-forest text-white text-lg font-medium tracking-wide shadow-lg hover:bg-sage hover:text-white transition-colors"
+          <div className="flex-1 flex flex-col justify-center min-h-0 px-6 pb-[max(1rem,env(safe-area-inset-bottom))]">
+            <nav
+              className="flex flex-col items-center gap-1 px-2"
+              aria-label="Primär navigering"
             >
-              Intresseanmälan
-            </Link>
+              {links.map((link) => {
+                const active = linkIsActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={`w-full max-w-sm text-center py-5 text-xl tracking-wide transition-colors border-b border-sand-dark/15 last:border-0 text-black ${
+                      active
+                        ? "font-semibold"
+                        : "font-medium hover:text-black/70"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="mt-8 w-full max-w-sm mx-auto">
+              <Link
+                href="/boka-hembesok"
+                onClick={() => setOpen(false)}
+                className="block w-full text-center px-8 py-4 rounded-full bg-forest text-white text-lg font-medium tracking-wide shadow-lg hover:bg-sage hover:text-white transition-colors"
+              >
+                Intresseanmälan
+              </Link>
+            </div>
           </div>
         </div>
       )}
