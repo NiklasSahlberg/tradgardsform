@@ -59,7 +59,7 @@ export default function FAQ() {
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
               >
-                <span className="font-heading text-lg text-forest leading-snug">
+                <span className="font-heading text-lg text-black leading-snug">
                   {faq.question}
                 </span>
                 <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sand flex items-center justify-center transition-colors group-hover:bg-sage">

@@ -1,7 +1,9 @@
-import fs from "node:fs";
-import path from "node:path";
+import galleryManifest from "./gallery-manifest.json";
 
-const GALLERY_ROOT = path.join(process.cwd(), "public", "bilder", "galleri");
+/** Filnamn per gallerimapp — genereras av scripts/generate-gallery-manifest.mjs (prebuild). */
+type GalleryManifest = Record<string, string[]>;
+
+const manifest: GalleryManifest = galleryManifest;
 
 /** Gruppering på projektsidan (översikt) */
 export type ProjectSectionId = "villa" | "brf" | "inspiration";
@@ -148,57 +150,40 @@ export function locationSlug(folder: string): string {
  * Returnerar publika URL:er till alla bilder i en undermapp till galleriet.
  * Om `previewFile` anges och filnamnet innehåller "preview", visas den inte i listan
  * (så samma fil inte ligger både som kort/hero och i rutnätet).
+ *
+ * Använder gallery-manifest.json (inte fs) så Vercel-serverlessfunktionen inte får
+ * alla bildfiler inbakade via file tracing.
  */
 export function getImagesForFolder(
   folderName: string,
   previewFile?: string
 ): string[] {
-  const dir = path.join(GALLERY_ROOT, folderName);
-  try {
-    if (!fs.existsSync(dir)) return [];
-    return fs
-      .readdirSync(dir, { withFileTypes: true })
-      .filter((d) => d.isFile())
-      .map((d) => d.name)
-      .filter((f) => /\.(jpe?g|jpeg|png|webp|gif)$/i.test(f))
-      .filter((f) => {
-        if (
-          previewFile &&
-          f === previewFile &&
-          /preview/i.test(f)
-        ) {
-          return false;
-        }
-        return true;
-      })
-      .sort((a, b) => a.localeCompare(b, "sv"))
-      .map(
-        (file) =>
-          `/bilder/galleri/${encodeURIComponent(folderName)}/${encodeURIComponent(file)}`
-      );
-  } catch {
-    return [];
-  }
+  const files = manifest[folderName] ?? [];
+  return files
+    .filter((f) => {
+      if (previewFile && f === previewFile && /preview/i.test(f)) {
+        return false;
+      }
+      return true;
+    })
+    .map(
+      (file) =>
+        `/bilder/galleri/${encodeURIComponent(folderName)}/${encodeURIComponent(file)}`
+    );
 }
 
 /**
- * Förhandsbild: `previewFile` om den finns på disk, annars första bilden i mappen.
+ * Förhandsbild: `previewFile` om den finns i manifestet, annars första bilden i mappen.
  */
 export function getPreviewImageForFolder(
   folderName: string,
   previewFile?: string
 ): string | null {
-  if (previewFile) {
-    const full = path.join(GALLERY_ROOT, folderName, previewFile);
-    try {
-      if (fs.existsSync(full) && fs.statSync(full).isFile()) {
-        return `/bilder/galleri/${encodeURIComponent(folderName)}/${encodeURIComponent(previewFile)}`;
-      }
-    } catch {
-      /* fall back */
-    }
+  const files = manifest[folderName] ?? [];
+  if (previewFile && files.includes(previewFile)) {
+    return `/bilder/galleri/${encodeURIComponent(folderName)}/${encodeURIComponent(previewFile)}`;
   }
-  const imgs = getImagesForFolder(folderName);
+  const imgs = getImagesForFolder(folderName, previewFile);
   return imgs[0] ?? null;
 }
 
