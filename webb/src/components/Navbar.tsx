@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const LOGO_ON_HERO = "/bilder/galleri/logo_web-removebg-preview.png";
@@ -12,11 +13,12 @@ const links = [
   { href: "/", label: "Hem" },
   { href: "/tjanster", label: "Tjänster" },
   { href: "/projekt", label: "Projekt" },
-  { href: "/om-oss", label: "Om Susanne" },
+  { href: "/om-oss", label: "Om oss" },
   { href: "/kontakta-oss", label: "Kontakta oss" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -25,6 +27,29 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const linkIsActive = (href: string) =>
+    href === "/"
+      ? pathname === "/"
+      : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header
@@ -72,9 +97,12 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="md:hidden p-2"
+          type="button"
+          className="md:hidden p-2 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           onClick={() => setOpen(!open)}
-          aria-label="Öppna meny"
+          aria-expanded={open}
+          aria-controls="mobile-menu-overlay"
+          aria-label={open ? "Stäng meny" : "Öppna meny"}
         >
           {open ? (
             <X className={scrolled ? "text-forest" : "text-white"} size={24} />
@@ -84,33 +112,60 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobil: fullskärmsmeny */}
       {open && (
         <div
-          className={`md:hidden border-t ${
-            scrolled
-              ? "bg-white border-sand-dark/20"
-              : "bg-cream border-sand-dark"
-          }`}
+          id="mobile-menu-overlay"
+          className="md:hidden fixed inset-0 z-[100] flex flex-col bg-cream min-h-dvh"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Huvudmeny"
         >
-          <nav className="flex flex-col px-6 py-4 gap-4">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-forest text-base font-medium py-2 border-b border-sand"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/kontakta-oss"
-              className="mt-2 px-5 py-3 rounded-full bg-sage text-white text-center font-medium"
+          <div className="shrink-0 flex items-center justify-end px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-2">
+            <button
+              type="button"
               onClick={() => setOpen(false)}
+              className="p-3 rounded-full text-black hover:bg-sand/80 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              aria-label="Stäng meny"
+            >
+              <X size={26} strokeWidth={1.75} />
+            </button>
+          </div>
+
+          <nav
+            className="flex-1 flex flex-col justify-center items-center gap-1 px-8"
+            aria-label="Primär navigering"
+          >
+            {links.map((link) => {
+              const active = linkIsActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={`w-full max-w-sm text-center py-5 text-xl tracking-wide transition-colors border-b border-sand-dark/15 last:border-0 text-black ${
+                    active
+                      ? "font-semibold"
+                      : "font-medium hover:text-black/70"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div
+            className="shrink-0 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4"
+          >
+            <Link
+              href="/boka-hembesok"
+              onClick={() => setOpen(false)}
+              className="block w-full max-w-sm mx-auto text-center px-8 py-4 rounded-full bg-forest text-white text-lg font-medium tracking-wide shadow-lg hover:bg-sage hover:text-white transition-colors"
             >
               Intresseanmälan
             </Link>
-          </nav>
+          </div>
         </div>
       )}
     </header>

@@ -57,7 +57,7 @@ export default function BokaHembesokPage() {
                 Tack, vi hör av oss!
               </h1>
               <p className="font-sans text-zinc-600 text-lg max-w-md leading-relaxed">
-                Susanne återkommer inom kort för att följa upp din
+                Jag återkommer inom kort för att följa upp din
                 intresseanmälan och boka in ett kostnadsfritt hembesök hos dig.
               </p>
               <Link
@@ -78,7 +78,7 @@ export default function BokaHembesokPage() {
                   Intresseanmälan
                 </h1>
                 <p className="font-sans text-zinc-600 leading-relaxed">
-                  Fyll i formuläret nedan så kontaktar Susanne dig med anledning
+                  Fyll i formuläret nedan så kontaktar jag dig med anledning
                   av din intresseanmälan och bokar in ett kostnadsfritt
                   hembesök. Ha gärna en aktuell tomtkarta tillgänglig till mötet.
                 </p>

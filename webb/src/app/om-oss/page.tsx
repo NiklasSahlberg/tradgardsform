@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Award, Leaf, MapPin, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Om Susanne Andersson | Trädgårdsdesigner Stockholm | Trädgårdsform",
+  title: "Om oss | Trädgårdsdesigner Stockholm | Trädgårdsform",
   description:
     "Susanne Andersson är diplomerad trädgårdsdesigner och trädgårdsarkitekt i Stockholm med lång erfarenhet och gedigen växtkunskap. Läs mer om Trädgårdsform.",
 };
@@ -32,12 +32,12 @@ const values = [
   {
     title: "Personligt engagemang",
     description:
-      "Varje trädgård är unik och varje kund har sina egna drömmar. Susanne lägger stor vikt vid att verkligen lyssna in vad du och din familj behöver — och sedan skapa en lösning som passar just er.",
+      "Varje trädgård är unik och varje kund har sina egna drömmar. Jag lägger stor vikt vid att verkligen lyssna in vad du och din familj behöver — och sedan skapa en lösning som passar just er.",
   },
   {
     title: "Gedigen växtkunskap",
     description:
-      "Med en djup förståelse för växter, klimat och ståndort kan Susanne föreslå växter som trivs i just din trädgård och som ger vackra resultat år efter år — utan onödigt jobb.",
+      "Med en djup förståelse för växter, klimat och ståndort kan jag föreslå växter som trivs i just din trädgård och som ger vackra resultat år efter år — utan onödigt jobb.",
   },
   {
     title: "Tydlighet och trygghet",
@@ -74,7 +74,7 @@ export default function OmOssPage() {
             </h1>
             <p className="font-sans text-white/90 text-xl md:text-2xl leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.4)] max-w-2xl mx-auto lg:mx-0">
               Med passion för trädgårdar och ett skarpt öga för design hjälper
-              Susanne dig att förverkliga din trädgårdsdröm — med fasta priser
+              jag dig att förverkliga din trädgårdsdröm — med fasta priser
               och ett personligt bemötande.
             </p>
             <blockquote className="mt-2 max-w-2xl mx-auto lg:mx-0 space-y-4">
@@ -110,7 +110,7 @@ export default function OmOssPage() {
               Utbildning och <em>erfarenhet</em>
             </h2>
             <p className="font-sans text-zinc-600 leading-relaxed mb-4">
-              Susanne Andersson är diplomerad trädgårdsdesigner och trädgårdsarkitekt
+              Jag är diplomerad trädgårdsdesigner och trädgårdsarkitekt
               med lång erfarenhet av designarbete och en gedigen växtkunskap.
               Hon arbetar med allt från enstaka rabatter till kompletta
               trädgårdsanläggningar för privatpersoner och bostadsrättsföreningar

@@ -339,7 +339,7 @@ export default function TjansterPage() {
             Osäker på vilket paket som <em>passar dig</em>?
           </h2>
           <p className="font-sans text-white/70 text-lg leading-relaxed">
-            Gör en intresseanmälan — så hjälper Susanne dig att
+            Gör en intresseanmälan — så hjälper jag dig att
             välja rätt nivå utifrån dina behov och din budget.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">

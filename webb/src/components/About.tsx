@@ -67,7 +67,7 @@ export default function About() {
             href="/om-oss"
             className="mt-2 self-start inline-flex items-center gap-2 text-sage font-medium font-sans hover:text-forest transition-colors border-b border-sage hover:border-forest pb-0.5"
           >
-            Läs mer om Susanne
+            Läs mer om oss
           </Link>
         </div>
       </div>

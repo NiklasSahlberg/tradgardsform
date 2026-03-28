@@ -6,7 +6,7 @@ const navLinks = [
   { href: "/", label: "Hem" },
   { href: "/tjanster", label: "Tjänster" },
   { href: "/projekt", label: "Projekt" },
-  { href: "/om-oss", label: "Om Susanne" },
+  { href: "/om-oss", label: "Om oss" },
   { href: "/kontakta-oss", label: "Kontakta oss" },
 ];
 
