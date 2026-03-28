@@ -9,9 +9,8 @@
   --color-sage-light: #7a9160;
   --color-sage-pale: #c8d9b3;
   --color-cream: #F7F4EE;
-  /* Test: kallare greige — mindre gult än #EAE0D0, fortfarande avgränsad mot cream */
-  --color-sand: #e8e6e1;
-  --color-sand-dark: #d6c9b4;
+  --color-sand: #EAE0D0;
+  --color-sand-dark: #D6C9B4;
 
   /* Rosa från logotypen */
   --color-pink-brand: #D36FBA;
