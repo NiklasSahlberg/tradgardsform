@@ -23,16 +23,16 @@ const usps = [
 
 export default function USP() {
   return (
-    <section className="bg-forest px-6 pt-10 pb-6 md:py-12">
+    <section className="bg-forest px-6 pt-4 pb-6 md:pt-6 md:pb-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {usps.map(({ icon: Icon, title, description }) => (
-            <div key={title} className="flex flex-col items-start gap-4">
+            <div key={title} className="flex flex-col items-start gap-3">
               <div className="w-12 h-12 rounded-full bg-sage/30 flex items-center justify-center flex-shrink-0">
                 <Icon className="text-sage-pale" size={22} />
               </div>
               <div>
-                <h3 className="font-heading text-2xl text-white mb-2">{title}</h3>
+                <h3 className="font-heading text-2xl text-white mb-1.5">{title}</h3>
                 <p className="font-sans text-white/70 leading-relaxed text-base">
                   {description}
                 </p>
