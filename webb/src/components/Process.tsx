@@ -1,18 +1,18 @@
 const steps = [
   {
-    number: "01",
+    number: "1",
     title: "Kostnadsfritt hembesök",
     description:
       "Vi träffas i din trädgård och går igenom dina önskemål, behov och drömmar. Med hjälp av vår Stilguide och Checklista skapar vi en tydlig bild av hur vi ska gå vidare.",
   },
   {
-    number: "02",
+    number: "2",
     title: "Trädgårdsritning tas fram",
     description:
       "Utifrån vårt möte tar Susanne fram din personliga trädgårdsritning. Du får en förhandsskiss för revidering innan det slutliga materialet levereras.",
   },
   {
-    number: "03",
+    number: "3",
     title: "Din nya trädgård",
     description:
       "Med en tydlig plan i hand kan du påbörja förverkligandet av din drömträdgård — på egen hand eller med hjälp av en anläggare.",

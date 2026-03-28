@@ -260,7 +260,7 @@ export default function TjansterPage() {
                 </div>
 
                 <Link
-                  href="/kontakta-oss"
+                  href="/boka-hembesok"
                   className="self-start inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-sage text-white font-medium text-sm hover:bg-forest transition-all hover:scale-105"
                 >
                   Kom igång

@@ -67,10 +67,19 @@ export default function Navbar() {
       ? pathname === "/"
       : pathname === href || pathname.startsWith(`${href}/`);
 
+  /** Sidor med fullbreddshero + mörk overlay: vit text ovanför fold. Övriga sidor (t.ex. intresseanmälan) behöver alltid ljus nav. */
+  const heroOverlayNav =
+    pathname === "/" ||
+    pathname === "/tjanster" ||
+    pathname.startsWith("/projekt") ||
+    pathname === "/om-oss" ||
+    pathname === "/kontakta-oss";
+  const solidNav = scrolled || !heroOverlayNav;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        solidNav
           ? "bg-white/98 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.06),0_4px_24px_-4px_rgba(0,0,0,0.08)]"
           : "bg-transparent"
       }`}
@@ -78,14 +87,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-18 py-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            key={scrolled ? "scrolled" : "hero"}
-            src={scrolled ? LOGO_SCROLLED : LOGO_ON_HERO}
+            key={solidNav ? "scrolled" : "hero"}
+            src={solidNav ? LOGO_SCROLLED : LOGO_ON_HERO}
             alt="Trädgårdsform logotyp"
             width={220}
             height={79}
             quality={100}
             className={`h-14 w-auto md:h-16 transition-opacity duration-300 ${
-              scrolled
+              solidNav
                 ? ""
                 : "brightness-110 contrast-110 saturate-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] drop-shadow-[0_1px_2px_rgba(255,255,255,0.35)]"
             }`}
@@ -98,7 +107,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm font-medium tracking-wide transition-colors hover:text-sage ${
-                scrolled ? "text-forest" : "text-white"
+                solidNav ? "text-forest" : "text-white"
               }`}
             >
               {link.label}
@@ -121,9 +130,9 @@ export default function Navbar() {
           aria-label={open ? "Stäng meny" : "Öppna meny"}
         >
           {open ? (
-            <X className={scrolled ? "text-forest" : "text-white"} size={24} />
+            <X className={solidNav ? "text-forest" : "text-white"} size={24} />
           ) : (
-            <Menu className={scrolled ? "text-forest" : "text-white"} size={24} />
+            <Menu className={solidNav ? "text-forest" : "text-white"} size={24} />
           )}
         </button>
       </div>

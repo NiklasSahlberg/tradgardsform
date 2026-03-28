@@ -41,14 +41,14 @@ export type ProjectLocationConfig = {
   previewFile?: string;
 };
 
-/** Mappnamn i public/bilder/galleri/ (exakt som på disk) */
+/** `description` visas på startsidan (projektsektion) och på respektive projektsida. */
 export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
   {
     folder: "Täby",
     title: "Täby",
     section: "villa",
     description:
-      "Utvalda bilder från trädgårdsprojekt i Täby — från idé till färdig trädgård.",
+      "En generös villaträdgård fick tydligare rum och bättre flöde mellan uteplats, gräsmatta och köksträdgård. Vi arbetade med höjdskillnader i rabatterna och valde växter som ger struktur året om.",
     previewFile: "2a.jpg",
   },
   {
@@ -56,7 +56,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Vallentuna",
     section: "villa",
     description:
-      "Inspiration från uppdrag i Vallentuna och närområdet.",
+      "Tomten kändes öppen mot grannar men saknade insynskydd och en naturlig plats att sitta. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol.",
     previewFile: "vallentuna-preview.png",
   },
   {
@@ -64,7 +64,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Enebyberg",
     section: "villa",
     description:
-      "Projekt och trädgårdsdesign i Enebyberg.",
+      "Uppdraget handlade om att skapa en enhetlig trädgård kring ett hus från sjuttiotalet. Nya gångar i natursten, uppdaterade planteringar och en tydlig entré gjorde stor skillnad utan att tumma på den gröna karaktären.",
     previewFile: "enebyberg-preview.png",
   },
   {
@@ -72,7 +72,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Silverdal",
     section: "villa",
     description:
-      "Bilder från genomförda projekt i Silverdal.",
+      "Här fokuserade vi på barnvänliga ytor och enkel skötsel i en lutande tomt. Slänten stabiliserades med växtlighet och trappor i trä, och framsidan fick en mjukare inramning mot gatan.",
     previewFile: "silverdal-preview.png",
   },
   {
@@ -80,7 +80,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Costa Tropical",
     section: "villa",
     description:
-      "Trädgårdsinspiration från varmare klimat — form, växter och rum.",
+      "Inspiration från Medelhavskusten — palmer, murar och poolkant som referens till form och material snarare än exakt växtlista. Bilderna visar hur ljus, skugga och vatten kan skapa rum i en varm utemiljö.",
     previewFile: "costa-tropical-preview.png",
   },
   {
@@ -88,7 +88,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Djurhamn Värmdö",
     section: "villa",
     description:
-      "Trädgårdsprojekt i Djurhamn, Värmdö — alla bilder från samma uppdrag.",
+      "Skärgårdsmiljö med salt vind och mager jord krävde tåliga växter och robusta material. Vi föreslog en mer öppen trädgård mot vattnet med vindskyddande buskage och en altan som följer husets linjer.",
     previewFile: "efter.jpg",
   },
   {
@@ -96,14 +96,14 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Skälby Järfälla",
     section: "villa",
     description:
-      "Trädgårdsprojekt i Skälby, Järfälla — alla bilder från samma uppdrag.",
+      "Kunden önskade mindre gräsmatta och mer blomning från tidig vår till sen höst. Rabatterna fick tydliga färgteman och bevattningen förenklades med täckbark och väl valda perenner och buskar.",
   },
   {
     folder: "Brf Fleminggatan",
     title: "Brf Fleminggatan",
     section: "brf",
     description:
-      "Trädgårdsprojekt för bostadsrättsföreningen på Fleminggatan — alla bilder från samma uppdrag.",
+      "Föreningen ville fräscha upp innergården utan stora ingrepp i bärande konstruktioner. Nya ytskikt i gångar, uppdaterade planteringar vid entrén och bättre belysning gjorde miljön tryggare och mer inbjudande.",
     previewFile: "IMG_0137.JPG",
   },
   {
@@ -111,15 +111,15 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Brf Helenelund",
     section: "brf",
     description:
-      "Trädgårdsprojekt för bostadsrättsföreningen i Helenelund — alla bilder från samma uppdrag.",
-    previewFile: "Foto 2024-08-14 12 42 23.jpg",
+      "Gemensamma rabatter och en sliten gräsmatta i gårdsmiljön byttes mot mer varierad växtlighet och tydligare zoner för passage och vistelse. Regnvattnet leddes bättre undan och planteringarna blev lättskötta.",
+    previewFile: "Foto 2024-08-14 12 45 40.jpg",
   },
   {
     folder: "Brf Rådmansgatan",
     title: "Brf Rådmansgatan",
     section: "brf",
     description:
-      "Trädgårdsprojekt för bostadsrättsföreningen på Rådmansgatan — alla bilder från samma uppdrag.",
+      "I en tät innerstadsmiljö handlade det om att maximera grönt på begränsad yta. Vertikala växtytor, kärl vid entré och krukarrabatter längs fasaden gav mer liv utan att skapa onödigt underhåll för styrelsen.",
     previewFile: "P1280468.JPG",
   },
   {
@@ -127,9 +127,17 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Brf St Eriksgatan",
     section: "brf",
     description:
-      "Trädgårdsprojekt för bostadsrättsföreningen på Sankt Eriksgatan — alla bilder från samma uppdrag.",
+      "Entrépartiet och cykelparkeringen behövde bli tydligare och grönare. Vi föreslog nya träd i lämplig skala, förbättrad belysning och planteringar som tål stadsklimat och saltning vintertid.",
     previewFile: "IMG_0215.JPG",
   },
+];
+
+/** Utvalda projekt på startsidan — mappnamn måste finnas i PROJECT_LOCATIONS */
+export const HOME_FEATURED_PROJECT_FOLDERS: readonly string[] = [
+  "Enebyberg",
+  "Costa Tropical",
+  "Brf Helenelund",
+  "Vallentuna",
 ];
 
 export type ProjectLocation = ProjectLocationConfig;

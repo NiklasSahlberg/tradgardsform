@@ -56,10 +56,10 @@ export default function Services() {
           {services.map((service) => (
             <div
               key={service.title}
-              className={`relative flex flex-col rounded-2xl overflow-hidden shadow-sm border transition-shadow hover:shadow-md ${
+              className={`relative flex flex-col rounded-2xl overflow-hidden shadow-sm border transition-shadow hover:shadow-md bg-cream ${
                 service.highlight
                   ? "border-sage ring-2 ring-sage"
-                  : "border-sand-dark bg-cream"
+                  : "border-sand-dark"
               }`}
             >
               {service.highlight && (
@@ -87,12 +87,8 @@ export default function Services() {
                   ))}
                 </ul>
                 <Link
-                  href="/kontakta-oss"
-                  className={`mt-4 w-full text-center py-3 rounded-full text-sm font-medium font-sans transition-all ${
-                    service.highlight
-                      ? "bg-sage text-white hover:bg-forest"
-                      : "bg-sand border border-sand-dark text-forest hover:bg-sage hover:text-white hover:border-sage"
-                  }`}
+                  href="/boka-hembesok"
+                  className="mt-4 w-full text-center py-3 rounded-full text-sm font-medium font-sans transition-all bg-sage text-white hover:bg-forest"
                 >
                   Kom igång
                 </Link>
