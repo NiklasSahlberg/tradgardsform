@@ -21,9 +21,8 @@ export default function CTABanner() {
         <h2 className="font-heading text-4xl md:text-6xl text-white leading-tight mb-6 [text-shadow:0_1px_2px_rgba(0,0,0,0.35),0_2px_20px_rgba(0,0,0,0.45)]">
           Förverkliga din <em>trädgårdsdröm</em> i år
         </h2>
-        <p className="font-sans text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
-          Gör en intresseanmälan och ta första steget mot en trädgård
-          du älskar att vara i.
+        <p className="font-sans text-white/85 text-sm md:text-lg leading-snug md:leading-relaxed text-balance mb-10 max-w-xl mx-auto [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
+          Gör en intresseanmälan och ta första steget mot en trädgård du älskar att vara i.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

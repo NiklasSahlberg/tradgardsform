@@ -196,47 +196,62 @@ export default function TjansterPage() {
             <div
               key={service.id}
               id={service.id}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:items-start ${
-                i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-              } ${
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 lg:gap-y-8 lg:items-stretch ${
                 i > 0
                   ? "border-t-2 border-sand-dark pt-12 md:border-t-0 md:pt-0"
                   : ""
               }`}
             >
-              {/* Rubrik + bild (pris före bild, bild före brödtext) */}
-              <div className="flex flex-col gap-8">
-                <div>
-                  <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-2">
-                    {service.subtitle}
-                  </p>
-                  <h2 className="font-heading text-3xl md:text-4xl text-forest leading-tight mb-1">
-                    {service.title}
-                  </h2>
-                  <p className="font-sans text-3xl font-bold text-forest">
-                    {service.price}{" "}
-                    <span className="text-base font-normal text-zinc-400">kr inkl. moms</span>
-                  </p>
-                </div>
-
-                <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden shadow-md">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  {service.highlight && (
-                    <div className="absolute top-4 left-4 bg-sage text-white text-xs font-sans font-medium px-4 py-1.5 rounded-full shadow">
-                      Mest populär
-                    </div>
-                  )}
-                </div>
+              {/* Rubrik + pris — mobil först; desktop i textkolumn (rad 1) */}
+              <div
+                className={`order-1 ${
+                  i % 2 === 0
+                    ? "lg:col-start-2 lg:row-start-1"
+                    : "lg:col-start-1 lg:row-start-1"
+                }`}
+              >
+                <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-2">
+                  {service.subtitle}
+                </p>
+                <h2 className="font-heading text-3xl md:text-4xl text-forest leading-tight mb-1">
+                  {service.title}
+                </h2>
+                <p className="font-sans text-3xl font-bold text-forest">
+                  {service.price}{" "}
+                  <span className="text-base font-normal text-zinc-400">kr inkl. moms</span>
+                </p>
               </div>
 
-              {/* Brödtext */}
-              <div className="flex flex-col gap-5">
+              {/* Bild — mobil efter pris; desktop i egen kolumn över två rader */}
+              <div
+                className={`order-2 relative h-[320px] md:h-[420px] lg:h-full lg:min-h-[420px] rounded-2xl overflow-hidden shadow-md lg:row-span-2 ${
+                  i % 2 === 0
+                    ? "lg:col-start-1 lg:row-start-1"
+                    : "lg:col-start-2 lg:row-start-1"
+                }`}
+              >
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                {service.highlight && (
+                  <div className="absolute top-4 left-4 bg-sage text-white text-xs font-sans font-medium px-4 py-1.5 rounded-full shadow">
+                    Mest populär
+                  </div>
+                )}
+              </div>
+
+              {/* Brödtext — mobil sist; desktop under rubrik i textkolumn */}
+              <div
+                className={`order-3 flex flex-col gap-5 ${
+                  i % 2 === 0
+                    ? "lg:col-start-2 lg:row-start-2"
+                    : "lg:col-start-1 lg:row-start-2"
+                }`}
+              >
                 <p className="font-sans text-zinc-600 leading-relaxed">
                   {service.description}
                 </p>
