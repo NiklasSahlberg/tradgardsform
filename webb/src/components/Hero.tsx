@@ -17,14 +17,14 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <p className="text-white text-base font-sans font-medium tracking-[0.2em] uppercase mb-6">
+        <p className="text-white text-base font-sans font-medium tracking-[0.2em] uppercase mb-6 [text-shadow:0_1px_10px_rgba(0,0,0,0.65)]">
           Trädgårdsdesign i Stockholm
         </p>
-        <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
+        <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 [text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.35)]">
           Trädgårdsdesign -<br />
           <em>förverkliga din drömträdgård</em>
         </h1>
-        <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.8)]">
+        <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.88),0_4px_32px_rgba(0,0,0,0.65),0_0_48px_rgba(0,0,0,0.45)]">
           Med professionell trädgårdsdesign och fasta priser hjälper vi dig
           att skapa en trädgård som verkligen fungerar för din familj.
         </p>

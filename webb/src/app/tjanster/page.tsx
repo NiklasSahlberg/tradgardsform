@@ -3,9 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, ArrowRight, Phone, MapPin, Gift, Building2, Lightbulb, Wifi } from "lucide-react";
 
-const tjansterHeroImage =
-  "/bilder/galleri/" +
-  encodeURIComponent("3-TRÄDGÅRDSFORMS-TRÄDGÅRDSDESIGN-5.jpg");
+const tjansterHeroImage = "/bilder/galleri/utehus.jpg";
 
 export const metadata: Metadata = {
   title: "Trädgårdsdesign & Tjänster Stockholm | Trädgårdsform",
@@ -157,36 +155,30 @@ export default function TjansterPage() {
           alt="Trädgårdsdesign av Trädgårdsform — exempel från genomfört projekt i Stockholm"
           fill
           priority
-          className="object-cover object-center brightness-[1.06]"
+          className="object-cover object-[center_88%] brightness-[1.06]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/28 via-black/12 to-black/32" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="text-white text-base font-sans font-medium tracking-[0.2em] uppercase mb-6 [text-shadow:0_1px_10px_rgba(0,0,0,0.65)]">
             Våra tjänster
           </p>
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 [text-shadow:0_2px_16px_rgba(0,0,0,0.75)]">
+          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 [text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.35)]">
             Trädgårdsdesign med <em>fasta priser</em>
           </h1>
-          <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.8)]">
+          <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.88),0_4px_32px_rgba(0,0,0,0.65),0_0_48px_rgba(0,0,0,0.45)]">
             Vi erbjuder allt från en enkel rådgivning till en komplett trädgårdsplanering.
             Du väljer den nivå som passar dig — alltid med tydliga priser från start.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link
               href="/boka-hembesok"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium text-base tracking-wide hover:bg-forest transition-all hover:scale-105 shadow-lg"
             >
               Intresseanmälan
               <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="#radgivning"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 text-white font-medium text-base tracking-wide hover:bg-white/20 transition-all"
-            >
-              Se paketen
             </Link>
           </div>
         </div>

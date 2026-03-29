@@ -95,16 +95,16 @@ export default function ProjektPage() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="text-white text-base font-sans font-medium tracking-[0.2em] uppercase mb-6 [text-shadow:0_1px_10px_rgba(0,0,0,0.65)]">
             Våra projekt
           </p>
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 [text-shadow:0_2px_16px_rgba(0,0,0,0.75)]">
+          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 [text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.35)]">
             Trädgårdsdesign i <em>praktiken</em>
           </h1>
-          <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-8 leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.8)]">
+          <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-8 leading-relaxed [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.88),0_4px_32px_rgba(0,0,0,0.65),0_0_48px_rgba(0,0,0,0.45)]">
             Utforska våra projekt — sorterade efter typ av uppdrag. Varje kort
             leder till hela bildgalleriet.
           </p>
@@ -126,7 +126,7 @@ export default function ProjektPage() {
 
           <a
             href="#projekt-kort"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/35 px-6 py-3 text-sm font-sans font-medium text-white hover:bg-white/25 transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/35 px-6 py-3 text-sm font-sans font-medium text-white hover:bg-white/25 transition-colors [text-shadow:0_1px_10px_rgba(0,0,0,0.65)]"
           >
             Se alla projekt
             <span className="inline-block translate-y-px" aria-hidden>
