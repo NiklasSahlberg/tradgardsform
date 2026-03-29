@@ -191,33 +191,21 @@ export default function TjansterPage() {
 
       {/* Tjänster */}
       <section className="bg-cream py-20 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col gap-24">
+        <div className="max-w-7xl mx-auto flex flex-col gap-28 md:gap-24">
           {services.map((service, i) => (
             <div
               key={service.id}
               id={service.id}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:items-start ${
                 i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+              } ${
+                i > 0
+                  ? "border-t-2 border-sand-dark pt-12 md:border-t-0 md:pt-0"
+                  : ""
               }`}
             >
-              {/* Bild */}
-              <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden shadow-md">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                {service.highlight && (
-                  <div className="absolute top-4 left-4 bg-sage text-white text-xs font-sans font-medium px-4 py-1.5 rounded-full shadow">
-                    Mest populär
-                  </div>
-                )}
-              </div>
-
-              {/* Text */}
-              <div className="flex flex-col gap-5">
+              {/* Rubrik + bild (pris före bild, bild före brödtext) */}
+              <div className="flex flex-col gap-8">
                 <div>
                   <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-2">
                     {service.subtitle}
@@ -231,6 +219,24 @@ export default function TjansterPage() {
                   </p>
                 </div>
 
+                <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden shadow-md">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  {service.highlight && (
+                    <div className="absolute top-4 left-4 bg-sage text-white text-xs font-sans font-medium px-4 py-1.5 rounded-full shadow">
+                      Mest populär
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Brödtext */}
+              <div className="flex flex-col gap-5">
                 <p className="font-sans text-zinc-600 leading-relaxed">
                   {service.description}
                 </p>

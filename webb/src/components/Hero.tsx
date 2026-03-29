@@ -25,23 +25,17 @@ export default function Hero() {
           <em>förverkliga din drömträdgård</em>
         </h1>
         <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.88),0_4px_32px_rgba(0,0,0,0.65),0_0_48px_rgba(0,0,0,0.45)]">
-          Med professionell trädgårdsdesign och fasta priser hjälper vi dig
+          Med professionell trädgårdsdesign och fasta priser hjälper jag dig
           att skapa en trädgård som verkligen fungerar för din familj.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Link
             href="/boka-hembesok"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium text-base tracking-wide hover:bg-forest transition-all hover:scale-105 shadow-lg"
           >
             Intresseanmälan
-            <ArrowRight size={18} /> 
-          </Link> 
-          <Link 
-            href="/projekt"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 text-white font-medium text-base tracking-wide hover:bg-white/20 transition-all"
-          >
-            Se våra projekt
+            <ArrowRight size={18} />
           </Link>
         </div>
       </div>
