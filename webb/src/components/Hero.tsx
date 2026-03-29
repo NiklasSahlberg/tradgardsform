@@ -26,7 +26,7 @@ export default function Hero() {
         </h1>
         <p className="text-white text-lg md:text-xl font-sans max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.88),0_4px_32px_rgba(0,0,0,0.65),0_0_48px_rgba(0,0,0,0.45)]">
           Med professionell trädgårdsdesign och fasta priser hjälper jag dig
-          att skapa en trädgård som verkligen fungerar för din familj.
+          att skapa en vacker trädgård som verkligen fungerar som en del av ditt hem.
         </p>
 
         <div className="flex justify-center">

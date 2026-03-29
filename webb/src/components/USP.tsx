@@ -5,7 +5,7 @@ const usps = [
     icon: ShieldCheck,
     title: "Fasta priser",
     description:
-      "Du vet exakt vad trädgårdsdesignen kostar redan från start — inga dolda avgifter eller otrevliga överraskningar.",
+      "Du vet exakt vad trädgårdsdesignen kostar redan från start — inga dolda avgifter eller överraskningar.",
   },
   {
     icon: Home,

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Trädgårdsdesign Stockholm | Trädgårdsform",
     description:
-      "Professionell trädgårdsdesign i Stockholm. Fasta priser, kostnadsfria hembesök och en diplomerad trädgårdsarkitekt.",
+      "Professionell trädgårdsdesign i Stockholm. Fasta priser, kostnadsfria hembesök och en diplomerad trädgårdsdesigner.",
     url: "https://tradgardsform.se",
     siteName: "Trädgårdsform",
     locale: "sv_SE",

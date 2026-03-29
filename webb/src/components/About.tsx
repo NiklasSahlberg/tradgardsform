@@ -30,11 +30,11 @@ export default function About() {
             Susanne Andersson — <em>din trädgårdsdesigner i Stockholm</em>
           </h2>
           <p className="font-sans text-zinc-600 text-lg leading-relaxed">
-            Susanne är diplomerad trädgårdsdesigner och trädgårdsarkitekt med lång
-            erfarenhet av trädgårdsdesign och en gedigen växtkunskap. Hennes styrka är
+            Jag är diplomerad trädgårdsdesigner och trädgårdsarkitekt med lång
+            erfarenhet av trädgårdsdesign och en gedigen växtkunskap. Min styrka är
             framförallt engagemanget för att varje kund ska kunna uppnå sin trädgårdsdröm.
           </p>
-          <p className="font-sans text-zinc-600 leading-relaxed">
+          <p className="font-sans text-zinc-600 text-lg leading-relaxed">
             Med kontor i Järfälla erbjuder Trädgårdsform trädgårdsdesign i hela Stockholm
             och Mälardalen — alltid med ett personligt och omsorgsfullt bemötande.
           </p>
@@ -43,13 +43,21 @@ export default function About() {
             <div className="flex items-center gap-3">
               <Award className="text-sage flex-shrink-0" size={20} />
               <span className="font-sans text-zinc-700">
-                Diplomerad trädgårdsdesigner & trädgårdsarkitekt
+                Diplomerad trädgårdsdesigner
               </span>
             </div>
             <div className="flex items-center gap-3">
               <Leaf className="text-sage flex-shrink-0" size={20} />
               <span className="font-sans text-zinc-700">
-                Certifierad medlem i Svenska Trädgårdsdesigners
+                Certifierad medlem i{" "}
+                <a
+                  href="https://www.svenskatradgardsdesigners.se"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sage font-medium hover:text-forest underline underline-offset-2"
+                >
+                  Svenska Trädgårdsdesigners
+                </a>
               </span>
             </div>
           </div>

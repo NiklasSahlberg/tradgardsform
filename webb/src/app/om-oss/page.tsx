@@ -16,7 +16,7 @@ const omOssHeroImage =
 const credentials = [
   {
     icon: Award,
-    text: "Diplomerad trädgårdsdesigner & trädgårdsarkitekt",
+    text: "Diplomerad trädgårdsdesigner",
   },
   {
     icon: Leaf,

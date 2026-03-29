@@ -9,7 +9,7 @@ const steps = [
     number: "2",
     title: "Trädgårdsritning tas fram",
     description:
-      "Utifrån vårt möte tar Susanne fram din personliga trädgårdsritning. Du får en förhandsskiss för revidering innan det slutliga materialet levereras.",
+      "Utifrån vårt möte tar jag fram din personliga trädgårdsritning. Du får en förhandsskiss för revidering innan det slutliga materialet levereras.",
   },
   {
     number: "3",
