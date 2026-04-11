@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import ProjectGallery from "@/components/ProjectGallery";
 import {
   PROJECT_LOCATIONS,
+  buildGallerySections,
   getImagesForFolder,
   getPreviewImageForFolder,
   getProjectBySlug,
@@ -38,6 +39,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   if (!project) notFound();
 
   const images = getImagesForFolder(project.folder, project.previewFile);
+  const gallerySections = buildGallerySections(project);
   const heroSrc =
     getPreviewImageForFolder(project.folder, project.previewFile) ??
     "/bilder/NY-scaled.jpg";
@@ -79,7 +81,12 @@ export default async function ProjectDetailPage({ params }: Props) {
       {/* Galleri */}
       <section className="bg-cream px-6 py-14 md:py-20">
         <div className="max-w-7xl mx-auto">
-          <ProjectGallery images={images} projectTitle={project.title} />
+          <ProjectGallery
+            projectTitle={project.title}
+            {...(gallerySections
+              ? { sections: gallerySections }
+              : { images })}
+          />
 
           <div className="mt-14 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link

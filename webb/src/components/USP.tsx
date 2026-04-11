@@ -11,7 +11,7 @@ const usps = [
     icon: Home,
     title: "Kostnadsfritt hembesök i Stockholm",
     description:
-      "Vi träffas i din trädgård i Stockholm för ett förutsättningslöst möte — utan kostnad. Först efter besöket bestämmer du om du vill gå vidare.",
+      "Vi träffas i din trädgård i Stockholm för ett förutsättningslöst möte — utan kostnad inom Stockholm norrort. Först efter besöket bestämmer du om du vill gå vidare.",
   },
   {
     icon: Calendar,

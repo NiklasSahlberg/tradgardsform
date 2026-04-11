@@ -32,6 +32,12 @@ export const PROJECT_SECTIONS: Record<
   },
 };
 
+/** Dela galleri i rubriker (t.ex. Nu / Innan). Filnamn som i gallerimappen. */
+export type ProjectGallerySectionFiles = {
+  title: string;
+  files: string[];
+};
+
 export type ProjectLocationConfig = {
   folder: string;
   title: string;
@@ -39,6 +45,8 @@ export type ProjectLocationConfig = {
   section: ProjectSectionId;
   /** Om satt: använd denna fil som förhandsbild i stället för första i mappen */
   previewFile?: string;
+  /** Valfritt: sektioner med egna rubriker (bilder listas i ordning per sektion) */
+  gallerySections?: ProjectGallerySectionFiles[];
 };
 
 /** `description` visas på startsidan (projektsektion) och på respektive projektsida. */
@@ -50,6 +58,22 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     description:
       "En generös villaträdgård fick tydligare rum och bättre flöde mellan uteplats, gräsmatta och köksträdgård. Vi arbetade med höjdskillnader i rabatterna och valde växter som ger struktur året om.",
     previewFile: "2a.jpg",
+    gallerySections: [
+      {
+        title: "Nu",
+        files: [
+          "1a.jpg",
+          "2a.jpg",
+          "4b.jpg",
+          "6a.jpg",
+          "Foto 2024-08-21 13 19 59.jpg",
+        ],
+      },
+      {
+        title: "Innan",
+        files: ["1.JPG", "2.JPG", "4.JPG", "6.JPG"],
+      },
+    ],
   },
   {
     folder: "Vallentuna",
@@ -72,7 +96,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Silverdal",
     section: "villa",
     description:
-      "Här fokuserade vi på barnvänliga ytor och enkel skötsel i en lutande tomt. Slänten stabiliserades med växtlighet och trappor i trä, och framsidan fick en mjukare inramning mot gatan.",
+      "Här var uppdraget att ersätta gräsmattan med sittplats och växtlighet där händelserna avlöser varandra över hela året.",
     previewFile: "silverdal-preview.png",
   },
   {
@@ -80,7 +104,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Costa Tropical",
     section: "villa",
     description:
-      "Inspiration från Medelhavskusten — palmer, murar och poolkant som referens till form och material snarare än exakt växtlista. Bilderna visar hur ljus, skugga och vatten kan skapa rum i en varm utemiljö.",
+      "Trädgård till nybyggt hus vid Medelhavets strand. Stora gröna växter skapar fin balans mot uteplatsernas, hårda material. Även belysningsplan ingick i uppdraget",
     previewFile: "costa-tropical-preview.png",
   },
   {
@@ -111,7 +135,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Brf Helenelund",
     section: "brf",
     description:
-      "Gemensamma rabatter och en sliten gräsmatta i gårdsmiljön byttes mot mer varierad växtlighet och tydligare zoner för passage och vistelse. Regnvattnet leddes bättre undan och planteringarna blev lättskötta.",
+      "En mycket sliten, gårdsmiljö byttes mot en mer varierad växtlighet med flera flexibla sittplatser och tydliga zoner för passage och förvaring.",
     previewFile: "Foto 2024-08-14 12 45 40.jpg",
   },
   {
@@ -127,7 +151,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Brf St Eriksgatan",
     section: "brf",
     description:
-      "Entrépartiet och cykelparkeringen behövde bli tydligare och grönare. Vi föreslog nya träd i lämplig skala, förbättrad belysning och planteringar som tål stadsklimat och saltning vintertid.",
+      "En total förändring krävdes då takbjälkslag skulle bytas, vackra, blickfång, sittplatser, belysning och funktioner skapades med fin balans för alla boende.",
     previewFile: "IMG_0215.JPG",
   },
 ];
@@ -193,6 +217,33 @@ export function getPreviewImageForFolder(
   }
   const imgs = getImagesForFolder(folderName, previewFile);
   return imgs[0] ?? null;
+}
+
+export type ProjectGallerySectionResolved = {
+  title: string;
+  images: string[];
+};
+
+/**
+ * Bygger sektioner med fulla bild-URL:er. Hoppar över filer som saknas i manifestet.
+ * Returnerar null om projektet saknar gallerySections.
+ */
+export function buildGallerySections(
+  project: ProjectLocationConfig
+): ProjectGallerySectionResolved[] | null {
+  if (!project.gallerySections?.length) return null;
+  const known = manifest[project.folder] ?? [];
+  const resolved = project.gallerySections.map((sec) => ({
+    title: sec.title,
+    images: sec.files
+      .filter((f) => known.includes(f))
+      .map(
+        (f) =>
+          `/bilder/galleri/${encodeURIComponent(project.folder)}/${encodeURIComponent(f)}`
+      ),
+  }));
+  const nonEmpty = resolved.filter((s) => s.images.length > 0);
+  return nonEmpty.length > 0 ? nonEmpty : null;
 }
 
 export function getProjectBySlug(slug: string) {

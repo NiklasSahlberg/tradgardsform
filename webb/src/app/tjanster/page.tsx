@@ -53,11 +53,11 @@ const services = [
   {
     id: "ideskiss-vaxt",
     title: "Idéskiss med växtförslag",
-    subtitle: "En komplett plan att arbeta från",
+    subtitle: "En bra plan att börja med",
     price: "24 800",
     duration: "Inkl. förhandsskiss",
     description:
-      "Utöver trädgårdens rum och funktioner får du även detaljerade växtförslag med svenska artnamn. Sittplatser, gångar, spaljéer och pergola ritas ut med materialangivelser.",
+      "Utöver trädgårdens rum och funktioner får du även detaljerade växtförslag med svenska artnamn. Sittplatser, gångar, spaljéer och pergola finns med.",
     features: [
       "Skalenlig ritning med rum och funktioner",
       "Växtförslag med svenska artnamn",
@@ -66,7 +66,7 @@ const services = [
       "Förhandsskiss med revidering",
       "Leverans via e-post",
     ],
-    forWho: "Passar dig som vill ha en komplett plan att själv arbeta vidare med.",
+    forWho: "Passar dig som vill ha en gedigen växtplan utöver formgivningen.",
     image: "/bilder/Forhandsritning-2-1024x724.jpg",
     highlight: false,
   },
@@ -81,7 +81,7 @@ const services = [
     features: [
       "Skalenlig material- och planteringsritning",
       "Växtförteckning med art och storlek",
-      "Material och markbeläggning med sort",
+      "Lista med material och markbeläggning",
       "Belysningsplan med armaturförslag",
       "Förhandsskiss med 1 revidering",
       "Leverans via e-post",
@@ -101,12 +101,12 @@ const services = [
     features: [
       "Färglagd illustrationsritning",
       "Detaljerad material- och planteringsritning",
-      "Växtförteckning med latin, bilder och cc-mått",
+      "Växtförteckning med bilder och cc-mått",
       "Utförliga planterings- och skötselanvisningar",
       "Skötselkalender",
       "Belysningsplan med armatur och effekt",
       "Förslag på konstruktioner (pergola, spaljéer)",
-      "Komplett pärm med dataminne per post",
+      "Komplett pärm med dataminne levereras med post",
     ],
     forWho: "Passar dig som vill ha ett komplett och gediget material och tar hjälp av anläggare.",
     image: "/bilder/Forhandsritning.-5-1024x724.jpg",
