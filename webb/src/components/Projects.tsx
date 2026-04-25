@@ -15,7 +15,7 @@ function buildFeaturedCards() {
     if (!project) return null;
     const src =
       getPreviewImageForFolder(project.folder, project.previewFile) ??
-      "/bilder/NY-scaled.jpg";
+      "/bilder/ny-hero.webp";
     const href = `/projekt/${locationSlug(project.folder)}`;
     const tag = PROJECT_SECTIONS[project.section].label;
     const alt = `${project.title} — trädgårdsprojekt av Trädgårdsform`;
@@ -81,6 +81,7 @@ export default function Projects() {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      fetchPriority="low"
                     />
                   </Link>
                   <Link

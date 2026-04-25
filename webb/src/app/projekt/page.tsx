@@ -81,7 +81,7 @@ export default function ProjektPage() {
   })).filter((g) => g.items.length > 0);
 
   const heroImage =
-    projects.find((p) => p.preview)?.preview ?? "/bilder/NY-scaled.jpg";
+    projects.find((p) => p.preview)?.preview ?? "/bilder/ny-hero.webp";
 
   return (
     <>
@@ -144,10 +144,10 @@ export default function ProjektPage() {
       {/* Kort per sektion */}
       <section
         id="projekt-kort"
-        className="scroll-mt-24 relative bg-cream px-6 pt-4 pb-20 md:pb-28"
+        className="scroll-mt-24 relative bg-cream px-0 md:px-6 pt-4 pb-20 md:pb-28"
       >
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-2xl mb-14 md:mb-20 pt-8 md:pt-10">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="max-w-2xl mb-14 md:mb-20 pt-8 md:pt-10 px-6 md:px-0">
             <div className="w-12 h-0.5 bg-sage/60 mb-6 rounded-full" aria-hidden />
             <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-4">
               Referenser
@@ -161,12 +161,12 @@ export default function ProjektPage() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-12 md:gap-16">
+          <div className="flex flex-col gap-12 md:gap-16 max-md:gap-0 max-md:divide-y max-md:divide-sand-dark/30">
             {groupedSections.map(({ id, label, lead, items }, index) => (
               <div
                 key={id}
                 id={`projekt-sektion-${id}`}
-                className="scroll-mt-28 rounded-2xl bg-white p-6 sm:p-8 md:p-10 lg:p-12 ring-1 ring-forest/[0.06] shadow-[0_24px_48px_-28px_rgba(61,80,48,0.12)]"
+                className="scroll-mt-28 w-full rounded-none bg-white p-6 sm:p-8 md:rounded-2xl md:p-10 lg:p-12 ring-1 ring-forest/[0.06] shadow-[0_24px_48px_-28px_rgba(61,80,48,0.12)] max-md:ring-0 max-md:shadow-none"
               >
                 <header className="mb-9 md:mb-11 flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10 border-b border-sand-dark/20 pb-8 md:pb-10">
                   <span

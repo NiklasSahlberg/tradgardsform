@@ -1,9 +1,4 @@
-import galleryManifest from "./gallery-manifest.json";
-
-/** Filnamn per gallerimapp — genereras av scripts/generate-gallery-manifest.mjs (prebuild). */
-type GalleryManifest = Record<string, string[]>;
-
-const manifest: GalleryManifest = galleryManifest;
+import { galleryFilesForFolder } from "./galleryManifest";
 
 /** Gruppering på projektsidan (översikt) */
 export type ProjectSectionId = "villa" | "brf" | "inspiration";
@@ -47,6 +42,8 @@ export type ProjectLocationConfig = {
   previewFile?: string;
   /** Valfritt: sektioner med egna rubriker (bilder listas i ordning per sektion) */
   gallerySections?: ProjectGallerySectionFiles[];
+  /** Alla miniatyrer i samma 4:3-ruta (ingen blandning av smala/breda kolumner) */
+  galleryUniformCells?: boolean;
 };
 
 /** `description` visas på startsidan (projektsektion) och på respektive projektsida. */
@@ -104,6 +101,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     description:
       "Uppdraget handlade om att skapa en enhetlig trädgård kring ett hus från sjuttiotalet. Nya gångar i natursten, uppdaterade planteringar och en tydlig entré gjorde stor skillnad utan att tumma på den gröna karaktären.",
     previewFile: "enebyberg-preview.png",
+    galleryUniformCells: true,
     gallerySections: [
       {
         title: "Nu",
@@ -136,11 +134,8 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "IMG_3559.JPG",
           "IMG_8494.JPG",
           "IMG_8496.JPG",
+          "Bild före.JPG",
         ],
-      },
-      {
-        title: "Innan",
-        files: ["Bild före.JPG"],
       },
     ],
   },
@@ -375,7 +370,7 @@ export function getImagesForFolder(
   folderName: string,
   previewFile?: string
 ): string[] {
-  const files = manifest[folderName] ?? [];
+  const files = galleryFilesForFolder(folderName);
   return files
     .filter((f) => {
       if (previewFile && f === previewFile && /preview/i.test(f)) {
@@ -396,7 +391,7 @@ export function getPreviewImageForFolder(
   folderName: string,
   previewFile?: string
 ): string | null {
-  const files = manifest[folderName] ?? [];
+  const files = galleryFilesForFolder(folderName);
   if (previewFile && files.includes(previewFile)) {
     return `/bilder/galleri/${encodeURIComponent(folderName)}/${encodeURIComponent(previewFile)}`;
   }
@@ -417,7 +412,7 @@ export function buildGallerySections(
   project: ProjectLocationConfig
 ): ProjectGallerySectionResolved[] | null {
   if (!project.gallerySections?.length) return null;
-  const known = manifest[project.folder] ?? [];
+  const known = galleryFilesForFolder(project.folder);
   const resolved = project.gallerySections.map((sec) => ({
     title: sec.title,
     images: sec.files

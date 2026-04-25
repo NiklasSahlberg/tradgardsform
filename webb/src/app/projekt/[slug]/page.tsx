@@ -42,7 +42,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const gallerySections = buildGallerySections(project);
   const heroSrc =
     getPreviewImageForFolder(project.folder, project.previewFile) ??
-    "/bilder/NY-scaled.jpg";
+    "/bilder/ny-hero.webp";
 
   return (
     <>
@@ -82,7 +82,9 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section className="bg-cream px-6 py-14 md:py-20">
         <div className="max-w-7xl mx-auto">
           <ProjectGallery
+            galleryFolder={project.folder}
             projectTitle={project.title}
+            uniformGalleryCells={project.galleryUniformCells}
             {...(gallerySections
               ? { sections: gallerySections }
               : { images })}

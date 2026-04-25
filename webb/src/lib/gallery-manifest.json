@@ -1,134 +1,618 @@
 {
-  "Brf Fleminggatan": [
-    "Bild före (1).JPG",
-    "Bild före.JPG",
-    "IMG_0098.JPG",
-    "IMG_0105.JPG",
-    "IMG_0109.JPG",
-    "IMG_0111.JPG",
-    "IMG_0116.JPG",
-    "IMG_0119.JPG",
-    "IMG_0137.JPG",
-    "IMG_0144.JPG",
-    "IMG_0148.JPG",
-    "IMG_0158.JPG",
-    "IMG_0165.JPG",
-    "IMG_0172.JPG",
-    "IMG_0173.JPG",
-    "IMG_0176.JPG",
-    "IMG_0177.JPG"
-  ],
-  "Brf Helenelund": [
-    "Bild före 1.JPG",
-    "Bild före 2.JPG",
-    "Foto 2024-08-14 12 40 20.jpg",
-    "Foto 2024-08-14 12 41 26.jpg",
-    "Foto 2024-08-14 12 42 23.jpg",
-    "Foto 2024-08-14 12 42 57.jpg",
-    "Foto 2024-08-14 12 43 48.jpg",
-    "Foto 2024-08-14 12 44 06.jpg",
-    "Foto 2024-08-14 12 45 06.jpg",
-    "Foto 2024-08-14 12 45 40.jpg",
-    "Foto 2024-08-14 12 47 20.jpg",
-    "Foto 2024-08-14 12 49 36.jpg"
-  ],
-  "Brf Rådmansgatan": [
-    "Bild före 1.JPG",
-    "Bild före 2.JPG",
-    "P1280441.JPG",
-    "P1280443.JPG",
-    "P1280444.JPG",
-    "P1280445.JPG",
-    "P1280447.JPG",
-    "P1280449.JPG",
-    "P1280450.JPG",
-    "P1280452.JPG",
-    "P1280458.JPG",
-    "P1280467.JPG",
-    "P1280468.JPG",
-    "P1280470.JPG"
-  ],
-  "Brf St Eriksgatan": [
-    "Bild före.JPG",
-    "IMG_0185.JPG",
-    "IMG_0191.JPG",
-    "IMG_0192.JPG",
-    "IMG_0212.JPG",
-    "IMG_0215.JPG",
-    "P1020236.JPG"
-  ],
-  "Costa Tropical": [
-    "406F78A1-7C4C-4932-BB3D-230A3B5BF47E.JPEG",
-    "5C27B76D-790E-4EF1-9D28-843AC1CD2C40.JPEG",
-    "6CE3A529-EAA1-48A8-8708-433671FFDEED.JPEG",
-    "costa-tropical-preview.png",
-    "D6B0B2EA-9C32-4D6C-9CF9-06194E5734D9.JPEG",
-    "DSC04864.jpg",
-    "E83C02DA-2B1F-4AFD-A6B3-66DDC3FA4E40.JPEG",
-    "E9CE00C3-C21F-455F-8AC8-BF45AF4BF86B.jpg",
-    "F1CCF7DC-1192-416E-B9CB-B6D4B40663F4.jpg",
-    "IMG_1077.jpg",
-    "IMG_1078.JPG",
-    "IMG_2546.jpg",
-    "IMG_5252.jpg",
-    "IMG_6628.jpg",
-    "IMG_9615.jpg"
-  ],
-  "Djurhamn Värmdö": [
-    "bild före.JPG",
-    "DSC04052 - Kopia.jpg",
-    "DSC04303 - kopia.jpg",
-    "efter.jpg",
-    "efterbild - kopia.jpg",
-    "kvällsbild.jpg"
-  ],
-  "Enebyberg": [
-    "Bild före.JPG",
-    "enebyberg-preview.png",
-    "Foto 2024-08-21 13 57 35.jpg",
-    "Foto 2024-08-21 13 57 41 - kopia.jpg",
-    "Foto 2024-08-21 13 58 57.jpg",
-    "Foto 2024-08-21 13 59 45.jpg"
-  ],
-  "Silverdal": [
-    "Bild före.JPG",
-    "Förhandsritning  kopia.jpg",
-    "IMG_3547.JPG",
-    "IMG_3559.JPG",
-    "IMG_8494.JPG",
-    "IMG_8496.JPG",
-    "silverdal-preview.png"
-  ],
-  "Skälby Järfälla": [
-    "IMG_1291.JPG",
-    "IMG_1295.JPG",
-    "IMG_1298.JPG",
-    "IMG_1326 - kopia.JPG",
-    "IMG_1332.JPG",
-    "IMG_1334.JPG",
-    "IMG_1337.JPG",
-    "IMG_1348.JPG",
-    "IMG_1362.JPG"
-  ],
-  "Täby": [
-    "1.JPG",
-    "1a.jpg",
-    "2.JPG",
-    "2a.jpg",
-    "4.JPG",
-    "4b.jpg",
-    "6.JPG",
-    "6a.jpg",
-    "Foto 2024-08-21 13 19 59.jpg"
-  ],
-  "Vallentuna": [
-    "6 - kopia.JPG",
-    "8 (2).JPG",
-    "8 (3).JPG",
-    "IMG_1549.JPG",
-    "IMG_1556.JPG",
-    "IMG_1574.JPG",
-    "IMG_1582.JPG",
-    "vallentuna-preview.png"
-  ]
+  "Brf Fleminggatan": {
+    "files": [
+      "Bild före (1).JPG",
+      "Bild före.JPG",
+      "IMG_0098.JPG",
+      "IMG_0105.JPG",
+      "IMG_0109.JPG",
+      "IMG_0111.JPG",
+      "IMG_0116.JPG",
+      "IMG_0119.JPG",
+      "IMG_0137.JPG",
+      "IMG_0144.JPG",
+      "IMG_0148.JPG",
+      "IMG_0158.JPG",
+      "IMG_0165.JPG",
+      "IMG_0172.JPG",
+      "IMG_0173.JPG",
+      "IMG_0176.JPG",
+      "IMG_0177.JPG"
+    ],
+    "dims": {
+      "Bild före (1).JPG": {
+        "w": 2056,
+        "h": 3648
+      },
+      "Bild före.JPG": {
+        "w": 3648,
+        "h": 2056
+      },
+      "IMG_0098.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0105.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0109.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0111.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0116.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0119.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0137.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0144.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0148.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0158.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0165.JPG": {
+        "w": 3456,
+        "h": 5184
+      },
+      "IMG_0172.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0173.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0176.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0177.JPG": {
+        "w": 3456,
+        "h": 5184
+      }
+    }
+  },
+  "Brf Helenelund": {
+    "files": [
+      "Bild före 1.JPG",
+      "Bild före 2.JPG",
+      "Foto 2024-08-14 12 40 20.jpg",
+      "Foto 2024-08-14 12 41 26.jpg",
+      "Foto 2024-08-14 12 42 23.jpg",
+      "Foto 2024-08-14 12 42 57.jpg",
+      "Foto 2024-08-14 12 43 48.jpg",
+      "Foto 2024-08-14 12 44 06.jpg",
+      "Foto 2024-08-14 12 45 06.jpg",
+      "Foto 2024-08-14 12 45 40.jpg",
+      "Foto 2024-08-14 12 47 20.jpg",
+      "Foto 2024-08-14 12 49 36.jpg"
+    ],
+    "dims": {
+      "Bild före 1.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "Bild före 2.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "Foto 2024-08-14 12 40 20.jpg": {
+        "w": 2817,
+        "h": 3722
+      },
+      "Foto 2024-08-14 12 41 26.jpg": {
+        "w": 2719,
+        "h": 3433
+      },
+      "Foto 2024-08-14 12 42 23.jpg": {
+        "w": 2555,
+        "h": 2959
+      },
+      "Foto 2024-08-14 12 42 57.jpg": {
+        "w": 2923,
+        "h": 3767
+      },
+      "Foto 2024-08-14 12 43 48.jpg": {
+        "w": 2663,
+        "h": 3385
+      },
+      "Foto 2024-08-14 12 44 06.jpg": {
+        "w": 2578,
+        "h": 3852
+      },
+      "Foto 2024-08-14 12 45 06.jpg": {
+        "w": 2647,
+        "h": 2334
+      },
+      "Foto 2024-08-14 12 45 40.jpg": {
+        "w": 3023,
+        "h": 3529
+      },
+      "Foto 2024-08-14 12 47 20.jpg": {
+        "w": 2112,
+        "h": 2975
+      },
+      "Foto 2024-08-14 12 49 36.jpg": {
+        "w": 2692,
+        "h": 2907
+      }
+    }
+  },
+  "Brf Rådmansgatan": {
+    "files": [
+      "Bild före 1.JPG",
+      "Bild före 2.JPG",
+      "P1280441.JPG",
+      "P1280443.JPG",
+      "P1280444.JPG",
+      "P1280445.JPG",
+      "P1280447.JPG",
+      "P1280449.JPG",
+      "P1280450.JPG",
+      "P1280452.JPG",
+      "P1280458.JPG",
+      "P1280467.JPG",
+      "P1280468.JPG",
+      "P1280470.JPG"
+    ],
+    "dims": {
+      "Bild före 1.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "Bild före 2.JPG": {
+        "w": 2973,
+        "h": 3751
+      },
+      "P1280441.JPG": {
+        "w": 3682,
+        "h": 3000
+      },
+      "P1280443.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280444.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280445.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280447.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280449.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280450.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280452.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280458.JPG": {
+        "w": 3650,
+        "h": 3000
+      },
+      "P1280467.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280468.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "P1280470.JPG": {
+        "w": 4000,
+        "h": 3000
+      }
+    }
+  },
+  "Brf St Eriksgatan": {
+    "files": [
+      "Bild före.JPG",
+      "IMG_0185.JPG",
+      "IMG_0191.JPG",
+      "IMG_0192.JPG",
+      "IMG_0212.JPG",
+      "IMG_0215.JPG",
+      "P1020236.JPG"
+    ],
+    "dims": {
+      "Bild före.JPG": {
+        "w": 3648,
+        "h": 2056
+      },
+      "IMG_0185.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0191.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0192.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0212.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_0215.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "P1020236.JPG": {
+        "w": 4000,
+        "h": 3000
+      }
+    }
+  },
+  "Costa Tropical": {
+    "files": [
+      "406F78A1-7C4C-4932-BB3D-230A3B5BF47E.JPEG",
+      "5C27B76D-790E-4EF1-9D28-843AC1CD2C40.JPEG",
+      "6CE3A529-EAA1-48A8-8708-433671FFDEED.JPEG",
+      "costa-tropical-preview.png",
+      "D6B0B2EA-9C32-4D6C-9CF9-06194E5734D9.JPEG",
+      "DSC04864.jpg",
+      "E83C02DA-2B1F-4AFD-A6B3-66DDC3FA4E40.JPEG",
+      "E9CE00C3-C21F-455F-8AC8-BF45AF4BF86B.jpg",
+      "F1CCF7DC-1192-416E-B9CB-B6D4B40663F4.jpg",
+      "IMG_1077.jpg",
+      "IMG_1078.JPG",
+      "IMG_2546.jpg",
+      "IMG_5252.jpg",
+      "IMG_6628.jpg",
+      "IMG_9615.jpg"
+    ],
+    "dims": {
+      "406F78A1-7C4C-4932-BB3D-230A3B5BF47E.JPEG": {
+        "w": 2687,
+        "h": 3887
+      },
+      "5C27B76D-790E-4EF1-9D28-843AC1CD2C40.JPEG": {
+        "w": 2822,
+        "h": 3349
+      },
+      "6CE3A529-EAA1-48A8-8708-433671FFDEED.JPEG": {
+        "w": 2771,
+        "h": 3842
+      },
+      "costa-tropical-preview.png": {
+        "w": 1024,
+        "h": 857
+      },
+      "D6B0B2EA-9C32-4D6C-9CF9-06194E5734D9.JPEG": {
+        "w": 1970,
+        "h": 2890
+      },
+      "DSC04864.jpg": {
+        "w": 1440,
+        "h": 1459
+      },
+      "E83C02DA-2B1F-4AFD-A6B3-66DDC3FA4E40.JPEG": {
+        "w": 2904,
+        "h": 4026
+      },
+      "E9CE00C3-C21F-455F-8AC8-BF45AF4BF86B.jpg": {
+        "w": 1677,
+        "h": 1404
+      },
+      "F1CCF7DC-1192-416E-B9CB-B6D4B40663F4.jpg": {
+        "w": 3024,
+        "h": 4032
+      },
+      "IMG_1077.jpg": {
+        "w": 2799,
+        "h": 3566
+      },
+      "IMG_1078.JPG": {
+        "w": 4032,
+        "h": 3024
+      },
+      "IMG_2546.jpg": {
+        "w": 1704,
+        "h": 2152
+      },
+      "IMG_5252.jpg": {
+        "w": 3024,
+        "h": 4032
+      },
+      "IMG_6628.jpg": {
+        "w": 2116,
+        "h": 3436
+      },
+      "IMG_9615.jpg": {
+        "w": 1651,
+        "h": 2680
+      }
+    }
+  },
+  "Djurhamn Värmdö": {
+    "files": [
+      "bild före.JPG",
+      "DSC04052 - Kopia.jpg",
+      "DSC04303 - kopia.jpg",
+      "efter.jpg",
+      "efterbild - kopia.jpg",
+      "kvällsbild.jpg"
+    ],
+    "dims": {
+      "bild före.JPG": {
+        "w": 3648,
+        "h": 2056
+      },
+      "DSC04052 - Kopia.jpg": {
+        "w": 2449,
+        "h": 2352
+      },
+      "DSC04303 - kopia.jpg": {
+        "w": 3555,
+        "h": 2177
+      },
+      "efter.jpg": {
+        "w": 4912,
+        "h": 3264
+      },
+      "efterbild - kopia.jpg": {
+        "w": 4140,
+        "h": 2760
+      },
+      "kvällsbild.jpg": {
+        "w": 4623,
+        "h": 3152
+      }
+    }
+  },
+  "Enebyberg": {
+    "files": [
+      "Bild före.JPG",
+      "enebyberg-preview.png",
+      "Foto 2024-08-21 13 57 35.jpg",
+      "Foto 2024-08-21 13 57 41 - kopia.jpg",
+      "Foto 2024-08-21 13 58 57.jpg",
+      "Foto 2024-08-21 13 59 45.jpg"
+    ],
+    "dims": {
+      "Bild före.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "enebyberg-preview.png": {
+        "w": 768,
+        "h": 1024
+      },
+      "Foto 2024-08-21 13 57 35.jpg": {
+        "w": 2916,
+        "h": 3888
+      },
+      "Foto 2024-08-21 13 57 41 - kopia.jpg": {
+        "w": 2824,
+        "h": 3520
+      },
+      "Foto 2024-08-21 13 58 57.jpg": {
+        "w": 2840,
+        "h": 3787
+      },
+      "Foto 2024-08-21 13 59 45.jpg": {
+        "w": 2823,
+        "h": 3764
+      }
+    }
+  },
+  "Silverdal": {
+    "files": [
+      "Bild före.JPG",
+      "Förhandsritning  kopia.jpg",
+      "IMG_3547.JPG",
+      "IMG_3559.JPG",
+      "IMG_8494.JPG",
+      "IMG_8496.JPG",
+      "silverdal-preview.png"
+    ],
+    "dims": {
+      "Bild före.JPG": {
+        "w": 2893,
+        "h": 2707
+      },
+      "Förhandsritning  kopia.jpg": {
+        "w": 2480,
+        "h": 1754
+      },
+      "IMG_3547.JPG": {
+        "w": 4567,
+        "h": 2732
+      },
+      "IMG_3559.JPG": {
+        "w": 2713,
+        "h": 4069
+      },
+      "IMG_8494.JPG": {
+        "w": 4032,
+        "h": 3024
+      },
+      "IMG_8496.JPG": {
+        "w": 4032,
+        "h": 3024
+      },
+      "silverdal-preview.png": {
+        "w": 1024,
+        "h": 612
+      }
+    }
+  },
+  "Skälby Järfälla": {
+    "files": [
+      "IMG_1291.JPG",
+      "IMG_1295.JPG",
+      "IMG_1298.JPG",
+      "IMG_1326 - kopia.JPG",
+      "IMG_1332.JPG",
+      "IMG_1334.JPG",
+      "IMG_1337.JPG",
+      "IMG_1348.JPG",
+      "IMG_1362.JPG"
+    ],
+    "dims": {
+      "IMG_1291.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_1295.JPG": {
+        "w": 3455,
+        "h": 3912
+      },
+      "IMG_1298.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_1326 - kopia.JPG": {
+        "w": 3456,
+        "h": 5184
+      },
+      "IMG_1332.JPG": {
+        "w": 4955,
+        "h": 3455
+      },
+      "IMG_1334.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_1337.JPG": {
+        "w": 3936,
+        "h": 3455
+      },
+      "IMG_1348.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_1362.JPG": {
+        "w": 3456,
+        "h": 5184
+      }
+    }
+  },
+  "Täby": {
+    "files": [
+      "1.JPG",
+      "1a.jpg",
+      "2.JPG",
+      "2a.jpg",
+      "4.JPG",
+      "4b.jpg",
+      "6.JPG",
+      "6a.jpg",
+      "Foto 2024-08-21 13 19 59.jpg"
+    ],
+    "dims": {
+      "1.JPG": {
+        "w": 3414,
+        "h": 3000
+      },
+      "1a.jpg": {
+        "w": 4032,
+        "h": 3024
+      },
+      "2.JPG": {
+        "w": 4000,
+        "h": 3000
+      },
+      "2a.jpg": {
+        "w": 1820,
+        "h": 1594
+      },
+      "4.JPG": {
+        "w": 3457,
+        "h": 3000
+      },
+      "4b.jpg": {
+        "w": 3024,
+        "h": 3499
+      },
+      "6.JPG": {
+        "w": 2502,
+        "h": 2070
+      },
+      "6a.jpg": {
+        "w": 3024,
+        "h": 3623
+      },
+      "Foto 2024-08-21 13 19 59.jpg": {
+        "w": 3024,
+        "h": 4032
+      }
+    }
+  },
+  "Vallentuna": {
+    "files": [
+      "6 - kopia.JPG",
+      "8 (2).JPG",
+      "8 (3).JPG",
+      "IMG_1549.JPG",
+      "IMG_1556.JPG",
+      "IMG_1574.JPG",
+      "IMG_1582.JPG",
+      "vallentuna-preview.png"
+    ],
+    "dims": {
+      "6 - kopia.JPG": {
+        "w": 3448,
+        "h": 2724
+      },
+      "8 (2).JPG": {
+        "w": 5124,
+        "h": 3455
+      },
+      "8 (3).JPG": {
+        "w": 3365,
+        "h": 4795
+      },
+      "IMG_1549.JPG": {
+        "w": 5030,
+        "h": 3455
+      },
+      "IMG_1556.JPG": {
+        "w": 3267,
+        "h": 4762
+      },
+      "IMG_1574.JPG": {
+        "w": 5184,
+        "h": 3456
+      },
+      "IMG_1582.JPG": {
+        "w": 3244,
+        "h": 4866
+      },
+      "vallentuna-preview.png": {
+        "w": 1024,
+        "h": 690
+      }
+    }
+  }
 }

@@ -9,11 +9,12 @@ export default function About() {
         <div className="relative">
           <div className="relative h-[360px] md:h-[560px] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/bilder/FUNKAR-DENNA-scaled.jpg"
+              src="/bilder/about-susanne.webp"
               alt="Susanne Andersson, trädgårdsdesigner i Stockholm — Trädgårdsform"
               fill
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
+              fetchPriority="low"
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-sage text-white rounded-2xl px-6 py-5 shadow-lg hidden lg:block">

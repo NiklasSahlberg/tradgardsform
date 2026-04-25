@@ -92,7 +92,7 @@ export default function Navbar() {
             alt="Trädgårdsform logotyp"
             width={220}
             height={79}
-            quality={100}
+            quality={85}
             className={`h-14 w-auto md:h-16 transition-opacity duration-300 ${
               solidNav
                 ? ""

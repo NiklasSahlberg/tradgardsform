@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
       <Image
-        src="/bilder/NY-scaled.jpg"
+        src="/bilder/ny-hero.webp"
         alt="Professionell trädgårdsdesign i Stockholm av Trädgårdsform"
         fill
         priority
