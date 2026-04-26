@@ -17,7 +17,11 @@ import {
   galleryOrisForUrls,
   PORTRAIT_ASPECT_THRESHOLD,
 } from "@/lib/galleryManifest";
-import { packGalleryRows, type GalleryOri } from "@/lib/packGalleryRows";
+import {
+  packGalleryRows,
+  type GalleryOri,
+  type PackedGalleryItem,
+} from "@/lib/packGalleryRows";
 
 export type ProjectGallerySection = {
   title: string;
@@ -96,8 +100,12 @@ type DesktopThumbCellProps = {
   projectTitle: string;
   sectionTitle?: string;
   galleryFolder: string;
-  span: 3 | 6;
+  span: PackedGalleryItem["span"];
   ori: GalleryOri;
+  /** Om satt: samma aspect för hela porträtt-raden (max h/w bland bilderna). */
+  portraitRowMaxHOverW?: number;
+  /** Rad med både L och P: porträtt fyller radhöjd (samma som landskap i mitten). */
+  portraitFillMixedRow?: boolean;
   onOpen: () => void;
 };
 
@@ -109,9 +117,16 @@ function DesktopThumbCell({
   galleryFolder,
   span,
   ori,
+  portraitRowMaxHOverW,
+  portraitFillMixedRow,
   onOpen,
 }: DesktopThumbCellProps) {
-  const colClass = span === 3 ? "sm:col-span-3" : "sm:col-span-6";
+  const colClass =
+    span === 3
+      ? "sm:col-span-3"
+      : span === 4
+        ? "sm:col-span-4"
+        : "sm:col-span-6";
 
   const alt =
     sectionTitle !== undefined
@@ -168,12 +183,44 @@ function DesktopThumbCell({
     );
   }
 
+  if (portraitFillMixedRow) {
+    return (
+      <div
+        className={`col-span-12 ${colClass} h-full min-h-0 self-stretch`}
+      >
+        <button
+          type="button"
+          onClick={onOpen}
+          className={`group relative h-full min-h-0 w-full cursor-zoom-in overflow-hidden rounded-2xl bg-sand-dark/20 text-left ${baseRing}`}
+          aria-label={ariaLabel}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes={SIZES_DESK_NARROW}
+          />
+        </button>
+      </div>
+    );
+  }
+
+  const dims = galleryDimsForPublicUrl(galleryFolder, src);
+  const portraitAspectStyle =
+    portraitRowMaxHOverW != null
+      ? ({ aspectRatio: `1 / ${portraitRowMaxHOverW}` } as const)
+      : dims != null
+        ? ({ aspectRatio: `${dims.w} / ${dims.h}` } as const)
+        : ({ aspectRatio: "3 / 4" } as const);
+
   return (
-    <div className={`col-span-12 ${colClass} flex min-h-0 self-stretch`}>
+    <div className={`col-span-12 ${colClass}`}>
       <button
         type="button"
         onClick={onOpen}
-        className={`group relative h-full min-h-[10rem] w-full cursor-zoom-in overflow-hidden rounded-2xl bg-sand-dark/20 text-left ${baseRing}`}
+        style={portraitAspectStyle}
+        className={`group relative w-full cursor-zoom-in overflow-hidden rounded-2xl bg-sand-dark/20 text-left ${baseRing}`}
         aria-label={ariaLabel}
       >
         <Image
@@ -220,13 +267,12 @@ function MobileThumbnail({
     );
   }
 
-  const dims = galleryDimsForPublicUrl(galleryFolder, src);
   const loc = galleryFileFromPublicUrl(src);
-  const isP = dims
-    ? dims.h / dims.w >= PORTRAIT_ASPECT_THRESHOLD
-    : Boolean(
-        loc && galleryOrientationFromManifest(loc.folder, loc.file) === "P"
-      );
+  const dims = galleryDimsForPublicUrl(galleryFolder, src);
+  const isP =
+    loc != null
+      ? (galleryOrientationFromManifest(loc.folder, loc.file) ?? "L") === "P"
+      : dims != null && dims.h / dims.w >= PORTRAIT_ASPECT_THRESHOLD;
 
   const alt =
     sectionTitle !== undefined
@@ -241,12 +287,20 @@ function MobileThumbnail({
   const baseRing =
     "shadow-sm ring-1 ring-sand-dark/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage";
 
+  const portraitAspectStyle =
+    isP && dims != null
+      ? ({ aspectRatio: `${dims.w} / ${dims.h}` } as const)
+      : undefined;
+  const portraitAspectClass =
+    isP && dims == null ? "aspect-[3/4]" : "";
+
   if (isP) {
     return (
       <button
         type="button"
         onClick={onOpen}
-        className={`group relative aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-2xl bg-sand-dark/20 ${baseRing}`}
+        style={portraitAspectStyle ?? undefined}
+        className={`group relative w-full cursor-zoom-in overflow-hidden rounded-2xl bg-sand-dark/20 ${portraitAspectClass} ${baseRing}`}
         aria-label={ariaLabel}
       >
         <Image
@@ -327,9 +381,31 @@ function DesktopGalleryRows({
     <div className="hidden sm:flex flex-col gap-6 lg:gap-8">
       {rows.map((row, ri) => {
         const allNarrow = row.length > 0 && row.every((x) => x.span === 3);
+        const narrowRowSpanSum = row.reduce((acc, x) => acc + x.span, 0);
+        /** Endast ofullständiga smala rader (t.ex. 3+3+3); full 12-kolumnsrad ska inte w-1/2-placeholder — blir för låg mot nästa rad. */
+        const incompleteNarrowRow = allNarrow && narrowRowSpanSum < 12;
+        const allPortraitInRow =
+          row.length > 0 &&
+          row.every(({ index }) => oris[index] === "P");
+        const rowHasLandscape = row.some(
+          ({ index }) => oris[index] === "L"
+        );
+        const rowHasPortrait = row.some(
+          ({ index }) => oris[index] === "P"
+        );
+        const portraitFillMixedRow = rowHasLandscape && rowHasPortrait;
+        let portraitRowMaxHOverW: number | undefined;
+        if (allPortraitInRow) {
+          let maxHw = 0;
+          for (const { index } of row) {
+            const d = galleryDimsForPublicUrl(galleryFolder, urls[index]);
+            if (d && d.w > 0) maxHw = Math.max(maxHw, d.h / d.w);
+          }
+          portraitRowMaxHOverW = maxHw > 0 ? maxHw : undefined;
+        }
         return (
           <div key={ri} className="relative">
-            {allNarrow ? (
+            {incompleteNarrowRow ? (
               <div
                 className="pointer-events-none invisible aspect-[4/3] w-1/2 shrink-0 select-none"
                 aria-hidden
@@ -337,7 +413,7 @@ function DesktopGalleryRows({
             ) : null}
             <div
               className={
-                allNarrow
+                incompleteNarrowRow
                   ? "absolute inset-0 grid grid-cols-12 items-stretch gap-4 sm:gap-6 lg:gap-8"
                   : "grid grid-cols-12 items-stretch gap-4 sm:gap-6 lg:gap-8"
               }
@@ -353,6 +429,10 @@ function DesktopGalleryRows({
                     globalIndex={gi}
                     span={span}
                     ori={ori}
+                    portraitRowMaxHOverW={portraitRowMaxHOverW}
+                    portraitFillMixedRow={
+                      portraitFillMixedRow && ori === "P"
+                    }
                     galleryFolder={galleryFolder}
                     projectTitle={projectTitle}
                     sectionTitle={sectionTitle}

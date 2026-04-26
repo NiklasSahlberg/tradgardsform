@@ -168,29 +168,26 @@ export default function OmOssPage() {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* CTA */}
-      <section className="bg-forest py-20 px-6">
-        <div className="max-w-2xl mx-auto text-center flex flex-col gap-6">
-          <h2 className="font-heading text-4xl md:text-5xl text-white leading-tight">
-            Vill du träffa <em>Susanne</em>?
+        <div className="max-w-2xl mx-auto text-center flex flex-col gap-6 mt-10 md:mt-12 pt-10 md:pt-11 border-t border-sand-dark/25">
+          <h2 className="font-heading text-4xl md:text-5xl text-forest leading-tight">
+            Vill du träffa <em className="text-sage">Susanne</em>?
           </h2>
-          <p className="font-sans text-white/70 text-lg leading-relaxed">
+          <p className="font-sans text-zinc-600 text-lg leading-relaxed">
             Gör en intresseanmälan och ta första steget mot
             din drömträdgård.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
             <Link
               href="/boka-hembesok"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium hover:bg-sage-light hover:text-forest transition-all hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-sage text-white font-medium hover:bg-forest transition-all hover:scale-105 shadow-md"
             >
               Intresseanmälan
               <ArrowRight size={18} />
             </Link>
             <Link
               href="/tjanster"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 border border-white/30 text-white font-medium hover:bg-white/20 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-forest/25 bg-white text-forest font-medium hover:border-sage/50 hover:bg-sand/40 transition-all"
             >
               Se våra tjänster
             </Link>

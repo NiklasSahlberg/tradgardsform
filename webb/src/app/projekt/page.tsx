@@ -27,7 +27,7 @@ function ProjectCard({ title, slug, description, preview }: ProjectCardProps) {
   return (
     <Link
       href={`/projekt/${slug}`}
-      className="group flex flex-col rounded-2xl overflow-hidden bg-white ring-1 ring-black/[0.06] shadow-[0_2px_8px_-2px_rgba(61,80,48,0.08)] transition-all duration-300 hover:shadow-[0_16px_40px_-12px_rgba(61,80,48,0.18)] hover:ring-sage/25 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+      className="group flex flex-col rounded-2xl overflow-hidden bg-white ring-1 ring-black/[0.07] shadow-[0_2px_12px_-4px_rgba(61,80,48,0.1)] transition-all duration-300 hover:shadow-[0_18px_40px_-14px_rgba(61,80,48,0.18)] hover:ring-sage/30 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
     >
       <div className="relative aspect-[16/10] bg-sand-dark/20">
         {preview ? (
@@ -50,7 +50,7 @@ function ProjectCard({ title, slug, description, preview }: ProjectCardProps) {
           </h3>
         </div>
       </div>
-      <div className="flex flex-col flex-1 p-6 md:p-7 border-t border-sand-dark/15">
+      <div className="flex flex-col flex-1 p-6 md:p-7 border-t border-sand-dark/20">
         <p className="font-sans text-zinc-500 text-[15px] md:text-base leading-relaxed line-clamp-3 flex-1">
           {description}
         </p>
@@ -147,42 +147,30 @@ export default function ProjektPage() {
         className="scroll-mt-24 relative bg-cream px-0 md:px-6 pt-4 pb-20 md:pb-28"
       >
         <div className="max-w-7xl mx-auto w-full">
-          <div className="max-w-2xl mb-14 md:mb-20 pt-8 md:pt-10 px-6 md:px-0">
-            <div className="w-12 h-0.5 bg-sage/60 mb-6 rounded-full" aria-hidden />
-            <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-4">
+          <div className="max-w-2xl mx-auto mb-10 md:mb-14 pt-8 md:pt-10 px-6 md:px-0 text-center">
+            <div
+              className="w-12 h-0.5 bg-sage/60 mb-6 rounded-full mx-auto"
+              aria-hidden
+            />
+            <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase">
               Referenser
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-forest leading-[1.12] tracking-tight mb-5">
-              Välj ett <em className="text-sage">projekt</em>
-            </h2>
-            <p className="font-sans text-zinc-600 text-base md:text-lg leading-relaxed">
-              Varje referens visas som eget galleri. Använd knapparna högst upp
-              eller bläddra i sektionerna nedan.
             </p>
           </div>
 
-          <div className="flex flex-col gap-12 md:gap-16 max-md:gap-0 max-md:divide-y max-md:divide-sand-dark/30">
-            {groupedSections.map(({ id, label, lead, items }, index) => (
+          <div className="flex flex-col gap-16 md:gap-24 max-md:gap-0 max-md:divide-y max-md:divide-sand-dark/25">
+            {groupedSections.map(({ id, label, lead, items }) => (
               <div
                 key={id}
                 id={`projekt-sektion-${id}`}
-                className="scroll-mt-28 w-full rounded-none bg-white p-6 sm:p-8 md:rounded-2xl md:p-10 lg:p-12 ring-1 ring-forest/[0.06] shadow-[0_24px_48px_-28px_rgba(61,80,48,0.12)] max-md:ring-0 max-md:shadow-none"
+                className="scroll-mt-28 w-full px-6 py-10 sm:py-12 md:px-0 md:py-0 max-md:pt-10 max-md:pb-10 first:max-md:pt-6"
               >
-                <header className="mb-9 md:mb-11 flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10 border-b border-sand-dark/20 pb-8 md:pb-10">
-                  <span
-                    className="font-heading text-4xl md:text-5xl text-sage/25 tabular-nums leading-none select-none"
-                    aria-hidden
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="min-w-0 flex-1 sm:pb-0.5">
-                    <h3 className="font-heading text-2xl md:text-3xl lg:text-[2rem] text-forest leading-tight tracking-tight mb-3">
-                      {label}
-                    </h3>
-                    <p className="font-sans text-zinc-500 text-base md:text-lg leading-relaxed max-w-2xl">
-                      {lead}
-                    </p>
-                  </div>
+                <header className="mb-9 md:mb-11 border-b border-sand-dark/20 pb-8 md:pb-10 text-center">
+                  <h3 className="font-heading text-3xl md:text-4xl lg:text-[2.5rem] text-forest leading-[1.15] tracking-tight mb-4">
+                    {label}
+                  </h3>
+                  <p className="font-sans text-zinc-500 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+                    {lead}
+                  </p>
                 </header>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-8">

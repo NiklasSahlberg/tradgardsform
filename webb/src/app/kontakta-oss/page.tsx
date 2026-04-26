@@ -33,7 +33,7 @@ const contactInfo = [
   {
     icon: Clock,
     label: "Hembesök",
-    value: "Kostnadsfritt inom Stockholm",
+    value: "Kostnadsfritt inom Stockholm i norrort",
     href: null,
   },
 ];
@@ -72,7 +72,7 @@ export default function KontaktPage() {
               </h1>
               <p className="text-white text-lg md:text-xl font-sans max-w-xl mx-auto mb-10 leading-relaxed [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.88),0_4px_32px_rgba(0,0,0,0.65),0_0_48px_rgba(0,0,0,0.45)]">
                 Välj det sätt som passar dig — telefon, e-post eller intresseanmälan.
-                Kostnadsfritt hembesök inom Stockholm. Vi återkommer så snart vi kan.
+                Kostnadsfritt hembesök inom Stockholm norrort. Vi återkommer så snart vi kan.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

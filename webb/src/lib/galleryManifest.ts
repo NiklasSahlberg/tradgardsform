@@ -2,6 +2,11 @@ import galleryManifest from "./gallery-manifest.json";
 
 export const PORTRAIT_ASPECT_THRESHOLD = 1.15;
 
+/** Nära tröskeln: räkna alltid som liggliggande så rutnätet inte får L–P–L och halv tom rad. */
+const TREAT_AS_LANDSCAPE: Partial<Record<string, readonly string[]>> = {
+  "Skälby Järfälla": ["IMG_1295.JPG"],
+};
+
 type ManifestEntry =
   | string[]
   | {
@@ -50,6 +55,7 @@ export function galleryOrientationFromManifest(
   folder: string,
   file: string
 ): "P" | "L" | null {
+  if (TREAT_AS_LANDSCAPE[folder]?.includes(file)) return "L";
   const d = galleryDimsForFolder(folder)?.[file];
   if (!d || d.w <= 0 || d.h <= 0) return null;
   return d.h / d.w >= PORTRAIT_ASPECT_THRESHOLD ? "P" : "L";

@@ -63,12 +63,14 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "2a.jpg",
           "4b.jpg",
           "6a.jpg",
-          "Foto 2024-08-21 13 19 59.jpg",
+          "1.JPG",
+          "Foto 2024-08-21 13 19 59.jpg"
+          
         ],
       },
       {
         title: "Innan",
-        files: ["1.JPG", "2.JPG", "4.JPG", "6.JPG"],
+        files: ["2.JPG", "4.JPG", "6.JPG"],
       },
     ],
   },
@@ -154,6 +156,8 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "5C27B76D-790E-4EF1-9D28-843AC1CD2C40.JPEG",
           "6CE3A529-EAA1-48A8-8708-433671FFDEED.JPEG",
           "D6B0B2EA-9C32-4D6C-9CF9-06194E5734D9.JPEG",
+          /* IMG_9615 före DSC04864 så rad 2 blir tre bilder (P+L+P) i stället för 2+1 ensam sist */
+          "IMG_9615.jpg",
           "DSC04864.jpg",
           "E83C02DA-2B1F-4AFD-A6B3-66DDC3FA4E40.JPEG",
           "E9CE00C3-C21F-455F-8AC8-BF45AF4BF86B.jpg",
@@ -163,7 +167,6 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "IMG_2546.jpg",
           "IMG_5252.jpg",
           "IMG_6628.jpg",
-          "IMG_9615.jpg",
         ],
       },
     ],
@@ -203,14 +206,15 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
         title: "Nu",
         files: [
           "IMG_1291.JPG",
-          "IMG_1295.JPG",
           "IMG_1298.JPG",
-          "IMG_1326 - kopia.JPG",
+          /* Tredje landskap före de två höga — säkrar raden 6+3+3 även om en etableringsbild råkar bli “smal” i data */
           "IMG_1332.JPG",
+          "IMG_1326 - kopia.JPG",
+          "IMG_1362.JPG",
+          "IMG_1295.JPG",
           "IMG_1334.JPG",
           "IMG_1337.JPG",
           "IMG_1348.JPG",
-          "IMG_1362.JPG",
         ],
       },
     ],
@@ -238,9 +242,10 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "IMG_0158.JPG",
           "IMG_0165.JPG",
           "IMG_0172.JPG",
+          /* 0177 mellan två stående + liggande så raden blir P+L+P (3+6+3); två L sist får egen rad */
+          "IMG_0177.JPG",
           "IMG_0173.JPG",
           "IMG_0176.JPG",
-          "IMG_0177.JPG",
         ],
       },
       {

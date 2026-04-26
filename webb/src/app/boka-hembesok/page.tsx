@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CheckCircle, ArrowLeft } from "lucide-react";
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl border border-sand-dark bg-cream font-sans text-sm text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-sage/40 focus:border-sage transition";
+  "w-full px-4 py-3 rounded-xl border border-sand-dark bg-zinc-50 font-sans text-sm text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-sage/40 focus:border-sage transition";
 
 export default function BokaHembesokPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -33,7 +33,7 @@ export default function BokaHembesokPage() {
   };
 
   return (
-    <div className="min-h-screen bg-cream flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Tillbaka-länk */}
       <div className="px-6 pt-28 pb-4 max-w-2xl mx-auto w-full">
         <Link
@@ -72,7 +72,7 @@ export default function BokaHembesokPage() {
             <>
               <div className="mb-10">
                 <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-3">
-                  Kostnadsfritt inom Stockholm
+                  Kostnadsfritt inom Stockholm i norrort
                 </p>
                 <h1 className="font-heading text-4xl md:text-5xl text-forest leading-tight mb-4">
                   Intresseanmälan

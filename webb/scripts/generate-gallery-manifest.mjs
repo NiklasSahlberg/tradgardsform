@@ -1,10 +1,11 @@
 /**
  * Skannar public/bilder/galleri och skriver src/lib/gallery-manifest.json.
- * Inkluderar filstorlekar (w/h) för galleri-layout utan att ladda bilder i klienten.
+ * Dimensioner med Sharp + EXIF-orientering så layout (P/L) stämmer med hur next/image visar.
  */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import sharp from "sharp";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -18,7 +19,6 @@ const outFile = path.join(root, "src", "lib", "gallery-manifest.json");
 function readDimensions(buf) {
   if (buf.length < 24) return null;
 
-  // JPEG
   if (buf[0] === 0xff && buf[1] === 0xd8) {
     let o = 2;
     while (o < buf.length - 8) {
@@ -37,7 +37,6 @@ function readDimensions(buf) {
     return null;
   }
 
-  // PNG
   if (
     buf[0] === 0x89 &&
     buf[1] === 0x50 &&
@@ -50,7 +49,6 @@ function readDimensions(buf) {
     return null;
   }
 
-  // WebP (VP8 keyframe)
   const riff = buf.toString("ascii", 0, 4);
   const webp = buf.toString("ascii", 8, 12);
   if (riff === "RIFF" && webp === "WEBP" && buf.length >= 30) {
@@ -69,7 +67,7 @@ function readDimensions(buf) {
  * @param {string} filePath
  * @returns {{ w: number; h: number } | null}
  */
-function dimsForFile(filePath) {
+function dimsFromBufferFallback(filePath) {
   try {
     const fd = fs.openSync(filePath, "r");
     const buf = Buffer.alloc(Math.min(65536, fs.statSync(filePath).size));
@@ -81,34 +79,64 @@ function dimsForFile(filePath) {
   }
 }
 
-if (!fs.existsSync(galleryRoot)) {
-  console.warn("generate-gallery-manifest: saknar", galleryRoot, "— skriver tom manifest.");
-  fs.writeFileSync(outFile, "{}\n", "utf8");
-  process.exit(0);
-}
-
-/** @type {Record<string, { files: string[]; dims: Record<string, { w: number; h: number }> }>} */
-const result = {};
-
-for (const entry of fs.readdirSync(galleryRoot, { withFileTypes: true })) {
-  if (!entry.isDirectory()) continue;
-  const name = entry.name;
-  const dir = path.join(galleryRoot, name);
-  const files = fs
-    .readdirSync(dir, { withFileTypes: true })
-    .filter((d) => d.isFile())
-    .map((d) => d.name)
-    .filter((f) => /\.(jpe?g|jpeg|png|webp|gif)$/i.test(f))
-    .sort((a, b) => a.localeCompare(b, "sv"));
-
-  /** @type {Record<string, { w: number; h: number }>} */
-  const dims = {};
-  for (const f of files) {
-    const d = dimsForFile(path.join(dir, f));
-    if (d) dims[f] = d;
+/**
+ * Visningsstorlek: byt plats på w/h när EXIF säger 90°/270° (värden 5–8).
+ * @param {string} filePath
+ * @returns {Promise<{ w: number; h: number } | null>}
+ */
+async function dimsForFile(filePath) {
+  try {
+    const m = await sharp(filePath, { failOn: "none" }).metadata();
+    if (m.width && m.height) {
+      let w = m.width;
+      let h = m.height;
+      const o = m.orientation ?? 1;
+      if (o >= 5 && o <= 8) [w, h] = [h, w];
+      return { w, h };
+    }
+  } catch {
+    /* sharp misslyckades */
   }
-  result[name] = { files, dims };
+  return dimsFromBufferFallback(filePath);
 }
 
-fs.writeFileSync(outFile, JSON.stringify(result, null, 2) + "\n", "utf8");
-console.log("generate-gallery-manifest: wrote", outFile, `(${Object.keys(result).length} folders)`);
+async function main() {
+  if (!fs.existsSync(galleryRoot)) {
+    console.warn("generate-gallery-manifest: saknar", galleryRoot, "— skriver tom manifest.");
+    fs.writeFileSync(outFile, "{}\n", "utf8");
+    process.exit(0);
+  }
+
+  /** @type {Record<string, { files: string[]; dims: Record<string, { w: number; h: number }> }>} */
+  const result = {};
+
+  for (const entry of fs.readdirSync(galleryRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const name = entry.name;
+    const dir = path.join(galleryRoot, name);
+    const files = fs
+      .readdirSync(dir, { withFileTypes: true })
+      .filter((d) => d.isFile())
+      .map((d) => d.name)
+      .filter((f) => /\.(jpe?g|jpeg|png|webp|gif)$/i.test(f))
+      .sort((a, b) => a.localeCompare(b, "sv"));
+
+    /** @type {Record<string, { w: number; h: number }>} */
+    const dims = {};
+    await Promise.all(
+      files.map(async (f) => {
+        const d = await dimsForFile(path.join(dir, f));
+        if (d) dims[f] = d;
+      })
+    );
+    result[name] = { files, dims };
+  }
+
+  fs.writeFileSync(outFile, JSON.stringify(result, null, 2) + "\n", "utf8");
+  console.log("generate-gallery-manifest: wrote", outFile, `(${Object.keys(result).length} folders)`);
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
