@@ -95,7 +95,8 @@ export default function OmOssPage() {
               alt="Susanne Andersson, trädgårdsdesigner i Stockholm"
               width={400}
               height={600}
-              className="rounded-2xl shadow-2xl object-cover ring-2 ring-white/20"
+              className="rounded-2xl shadow-2xl object-cover ring-2 ring-white/20 h-auto w-[min(100%,260px)] sm:w-[min(100%,300px)] md:w-[300px] lg:w-[320px]"
+              sizes="(max-width: 639px) 260px, (max-width: 1023px) 300px, 320px"
               priority
             />
           </div>
