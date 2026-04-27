@@ -6,17 +6,26 @@ const services = [
     title: "Trädgårdsrådgivning",
     price: "4 000",
     description: "Två timmar på plats i din trädgård. Vi bollar idéer och du får konkreta förslag på utformning, växter och material.",
-    features: ["2 timmar på plats", "Idéer & inspiration", "Tips på växter och material"],
+    features: ["2 timmar på plats", "Idéer, design & inspiration", "Tips på växter och material"],
     highlight: false,
-    image: "/bilder/hostmorker2.jpeg",
+    image: "/bilder/IMG_1717.jpg",
   },
   {
     title: "Idéskiss",
     price: "19 500",
-    description: "Skalenlig trädgårdsritning i svart/vitt med trädgårdens rum och funktioner — perfekt om du vill fylla på innehållet själv.",
+    description: "Skalenlig trädgårdsritning med trädgårdens rum och funktioner — perfekt om du vill fylla på innehållet själv.",
     features: ["Skalenlig ritning", "Rum & funktioner", "1 revideringstillfälle"],
     highlight: false,
     image: "/bilder/Ideskiss-Trad-buskar-Perenner-3-1024x724.jpg",
+  },
+  {
+    title: "Idéskiss med växtförslag",
+    price: "24 800",
+    description:
+      "Som idéskiss, plus detaljerade växtförslag med svenska artnamn. Sittplatser, gångar, spaljéer och pergola finns inritade.",
+    features: ["Rum & funktioner", "Växtförslag med artnamn", "Förhandsskiss med revidering"],
+    highlight: false,
+    image: "/bilder/Forhandsritning-2-1024x724.jpg",
   },
   {
     title: "Basritning",
@@ -30,7 +39,7 @@ const services = [
     title: "Komplett planering",
     price: "45 800",
     description: "Allt du behöver — inklusive färglagd illustrationsritning, detaljerad växtförteckning, skötselanvisningar och en komplett pärm.",
-    features: ["Färglagd illustration", "Detaljerad växtförteckning", "Skötselkalender", "Komplett pärm per post"],
+    features: ["Färglagd illustration", "Detaljerad växtförteckning", "Skötselkalender", "Komplett pärm"],
     highlight: false,
     image: "/bilder/Forhandsritning.-5-1024x724.jpg",
   },
@@ -39,7 +48,7 @@ const services = [
 export default function Services() {
   return (
     <section className="bg-sand py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[min(100%,108rem)] mx-auto">
         <div className="text-center mb-16">
           <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-3">
             Våra tjänster
@@ -52,11 +61,11 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 xl:gap-6">
           {services.map((service) => (
             <div
               key={service.title}
-              className={`relative flex flex-col rounded-2xl overflow-hidden shadow-sm border transition-shadow hover:shadow-md bg-cream ${
+              className={`relative flex min-w-0 flex-col rounded-2xl overflow-hidden shadow-sm border transition-shadow hover:shadow-md bg-cream ${
                 service.highlight
                   ? "border-sage ring-2 ring-sage"
                   : "border-sand-dark"

@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, ArrowRight, Phone, MapPin, Gift, Building2, Lightbulb, Wifi } from "lucide-react";
+import ServiceImagesLightbox from "@/components/ServiceImagesLightbox";
 
 const tjansterHeroImage = "/bilder/galleri/utehus.jpg";
+
+const komplettPlaneringBilder = [
+  "Materialbeskrivning Sida 002.jpg",
+  "Materialbeskrivning Sida 004.jpg",
+  "Växter Sida 004.jpg",
+  "Växter Bilder Sida 004.jpg",
+].map((fil) => `/bilder/${encodeURIComponent(fil)}`);
 
 export const metadata: Metadata = {
   title: "Trädgårdsdesign & Tjänster Stockholm | Trädgårdsform",
@@ -28,7 +36,7 @@ const services = [
       "Du antecknar själv",
     ],
     forWho: "Passar dig som vill ha konkreta råd och inspiration utan en fullständig ritning.",
-    image: "/bilder/5-1024x735.jpg",
+    image: "/bilder/IMG_1717.jpg",
     highlight: false,
   },
   {
@@ -38,16 +46,16 @@ const services = [
     price: "19 500",
     duration: "Inkl. förhandsskiss",
     description:
-      "En skalenlig trädgårdsritning i svart/vitt som visar trädgårdens rum, funktioner och övergripande karaktär — utan detaljerade växtförslag. Perfekt om du vill ha en tydlig struktur att arbeta vidare med själv.",
+      "En skalenlig trädgårdsritning som visar trädgårdens rum, funktioner och övergripande karaktär — utan detaljerade växtförslag. Perfekt om du vill ha en tydlig struktur att arbeta vidare med själv.",
     features: [
-      "Skalenlig ritning i svart/vitt",
+      "Skalenlig ritning",
       "Trädgårdens rum och funktioner",
       "Övergripande design och karaktär",
       "Förhandsskiss med 1 revideringstillfälle",
       "Leverans via e-post",
     ],
     forWho: "Passar dig som vill ha hjälp med trädgårdens struktur men vill fylla på innehållet själv.",
-    image: "/bilder/Ideskiss-Trad-buskar-Perenner-3-1024x724.jpg",
+    image: "/bilder/Forhandsritning-2-1024x724.jpg",
     highlight: false,
   },
   {
@@ -67,7 +75,7 @@ const services = [
       "Leverans via e-post",
     ],
     forWho: "Passar dig som vill ha en gedigen växtplan utöver formgivningen.",
-    image: "/bilder/Forhandsritning-2-1024x724.jpg",
+    image: "/bilder/Ideskiss-Trad-buskar-Perenner-3-1024x724.jpg",
     highlight: false,
   },
   {
@@ -87,7 +95,11 @@ const services = [
       "Leverans via e-post",
     ],
     forWho: "Passar dig som ska anlita en anläggare och behöver ett professionellt underlag.",
-    image: "/bilder/Materialritning-3-1024x724.jpg",
+    image: "/bilder/Belysningsförslag.jpg",
+    images: [
+      "/bilder/Belysningsförslag.jpg",
+      "/bilder/material%20exempel.jpg",
+    ],
     highlight: true,
   },
   {
@@ -97,7 +109,7 @@ const services = [
     price: "45 800",
     duration: "Inkl. förhandsskiss + pärm",
     description:
-      "Det mest omfattande alternativet — med allt från färglagd illustrationsritning till detaljerade skötselanvisningar och en komplett pärm per post. Perfekt när du vill ha ett fullständigt beslutsunderlag.",
+      "Det mest omfattande alternativet — med allt från färglagd illustrationsritning till detaljerade skötselanvisningar och en komplett pärm. Perfekt när du vill ha ett fullständigt beslutsunderlag.",
     features: [
       "Färglagd illustrationsritning",
       "Detaljerad material- och planteringsritning",
@@ -109,7 +121,8 @@ const services = [
       "Komplett pärm med dataminne levereras med post",
     ],
     forWho: "Passar dig som vill ha ett komplett och gediget material och tar hjälp av anläggare.",
-    image: "/bilder/Forhandsritning.-5-1024x724.jpg",
+    image: komplettPlaneringBilder[0],
+    images: komplettPlaneringBilder,
     highlight: false,
   },
 ];
@@ -192,7 +205,34 @@ export default function TjansterPage() {
       {/* Tjänster */}
       <section className="bg-cream py-20 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-28 md:gap-24">
-          {services.map((service, i) => (
+          {services.map((service, i) => {
+            const galleryImages =
+              "images" in service &&
+              Array.isArray((service as { images?: string[] }).images) &&
+              (service as { images: string[] }).images.length > 0
+                ? (service as { images: string[] }).images
+                : [service.image];
+
+            const galleryAlts =
+              galleryImages.length === 1
+                ? [service.title]
+                : service.id === "basritning"
+                  ? [
+                      `${service.title} — belysningsförslag`,
+                      `${service.title} — materialexempel`,
+                    ]
+                  : service.id === "komplett"
+                    ? [
+                        `${service.title} — materialbeskrivning, sida 002`,
+                        `${service.title} — materialbeskrivning, sida 004`,
+                        `${service.title} — växter, sida 004`,
+                        `${service.title} — växter med bilder, sida 004`,
+                      ]
+                    : galleryImages.map(
+                        (_, idx) => `${service.title} — bild ${idx + 1}`
+                      );
+
+            return (
             <div
               key={service.id}
               id={service.id}
@@ -224,18 +264,26 @@ export default function TjansterPage() {
 
               {/* Bild — mobil efter pris; desktop i egen kolumn över två rader */}
               <div
-                className={`order-2 relative h-[320px] md:h-[420px] lg:h-full lg:min-h-[420px] rounded-2xl overflow-hidden shadow-md lg:row-span-2 ${
+                className={`order-2 relative rounded-2xl overflow-hidden shadow-md lg:row-span-2 lg:h-full lg:min-h-[420px] max-sm:h-auto max-sm:min-h-0 ${
+                  galleryImages.length >= 4
+                    ? "sm:h-[380px] md:h-[520px]"
+                    : "sm:h-[320px] md:h-[420px]"
+                } ${
                   i % 2 === 0
                     ? "lg:col-start-1 lg:row-start-1"
                     : "lg:col-start-2 lg:row-start-1"
                 }`}
               >
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                <ServiceImagesLightbox
+                  images={galleryImages}
+                  alts={galleryAlts}
+                  contextLabel={service.title}
+                  variant={galleryImages.length === 1 ? "single" : "grid"}
+                  thumbnailObjectPosition={
+                    service.id === "radgivning"
+                      ? "object-[center_60%]"
+                      : undefined
+                  }
                 />
                 {service.highlight && (
                   <div className="absolute top-4 left-4 bg-sage text-white text-xs font-sans font-medium px-4 py-1.5 rounded-full shadow">
@@ -281,7 +329,8 @@ export default function TjansterPage() {
                 </Link>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Prisinfo — under alla paket */}

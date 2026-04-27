@@ -18,7 +18,7 @@ export default function About() {
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-sage text-white rounded-2xl px-6 py-5 shadow-lg hidden lg:block">
-            <p className="font-heading text-3xl font-bold">15+</p>
+            <p className="font-heading text-3xl font-bold">20+</p>
             <p className="font-sans text-sm text-white/80 mt-1">års erfarenhet</p>
           </div>
         </div>

@@ -72,7 +72,7 @@ export default function BokaHembesokPage() {
             <>
               <div className="mb-10">
                 <p className="font-sans text-pink-brand text-sm font-medium tracking-[0.2em] uppercase mb-3">
-                  Kostnadsfritt inom Stockholm i norrort
+                  Kostnadsfritt inom Stockholm norrort
                 </p>
                 <h1 className="font-heading text-4xl md:text-5xl text-forest leading-tight mb-4">
                   Intresseanmälan

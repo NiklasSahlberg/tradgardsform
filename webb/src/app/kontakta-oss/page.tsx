@@ -33,7 +33,7 @@ const contactInfo = [
   {
     icon: Clock,
     label: "Hembesök",
-    value: "Kostnadsfritt inom Stockholm i norrort",
+    value: "Kostnadsfritt inom Stockholm norrort",
     href: null,
   },
 ];
