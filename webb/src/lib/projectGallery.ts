@@ -77,7 +77,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Vallentuna",
     section: "villa",
     description:
-      "Tomten kändes öppen mot grannar och insynskydd sankades. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol.",
+      "Tomten kändes öppen mot grannar och insynskydd saknades. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol.",
     previewFile: "vallentuna-preview.png",
     gallerySections: [
       {
