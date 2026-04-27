@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import Process from "@/components/Process";
 import Services from "@/components/Services";
 import CTABanner from "@/components/CTABanner";
+import { faqPageJsonLd } from "@/lib/faqContent";
 
 const Reviews = dynamic(() => import("@/components/Reviews"), {
   loading: () => (
@@ -37,9 +38,15 @@ const FAQ = dynamic(() => import("@/components/FAQ"), {
   ),
 });
 
+const faqSchema = faqPageJsonLd();
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Hero />
       <USP />
       <About />

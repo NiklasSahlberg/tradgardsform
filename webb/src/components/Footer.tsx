@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
+import FooterServiceLinks from "@/components/FooterServiceLinks";
 
 const navLinks = [
   { href: "/", label: "Hem" },
@@ -8,14 +9,6 @@ const navLinks = [
   { href: "/projekt", label: "Projekt" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/kontakta-oss", label: "Kontakta oss" },
-];
-
-const serviceLinks = [
-  { href: "/tjanster#radgivning", label: "Trädgårdsrådgivning" },
-  { href: "/tjanster#ideskiss-vaxt", label: "Idéskiss med växtförslag" },
-  { href: "/tjanster#komplett", label: "Komplett planering" },
-  { href: "/tjanster#belysningsplan", label: "Belysningsplan" },
-  { href: "/tjanster#distansradgivning", label: "Distansrådgivning" },
 ];
 
 export default function Footer() {
@@ -60,18 +53,7 @@ export default function Footer() {
 
         <div>
           <h4 className="text-white font-medium mb-4 tracking-wide">Tjänster</h4>
-          <ul className="flex flex-col gap-2">
-            {serviceLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm hover:text-white transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <FooterServiceLinks />
         </div>
 
         <div>
