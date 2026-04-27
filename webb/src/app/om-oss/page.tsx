@@ -6,7 +6,7 @@ import { Award, Leaf, MapPin, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Om oss | Trädgårdsdesigner Stockholm | Trädgårdsform",
   description:
-    "Susanne Andersson är diplomerad trädgårdsdesigner och trädgårdsarkitekt i Stockholm med lång erfarenhet och gedigen växtkunskap. Läs mer om Trädgårdsform.",
+    "Susanne Andersson är diplomerad trädgårdsdesigner i Stockholm med lång erfarenhet och gedigen växtkunskap. Läs mer om Trädgårdsform.",
 };
 
 const omOssHeroImage =
@@ -112,7 +112,7 @@ export default function OmOssPage() {
               Utbildning och <em>erfarenhet</em>
             </h2>
             <p className="font-sans text-zinc-600 text-lg leading-relaxed mb-4">
-              Jag är diplomerad trädgårdsdesigner och trädgårdsarkitekt
+              Jag är diplomerad trädgårdsdesigner
               med lång erfarenhet av designarbete och en gedigen växtkunskap.
               Jag arbetar med allt från enstaka rabatter till kompletta
               trädgårdsanläggningar för privatpersoner och bostadsrättsföreningar

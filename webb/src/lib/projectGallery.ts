@@ -63,14 +63,12 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "2a.jpg",
           "4b.jpg",
           "6a.jpg",
-          "1.JPG",
-          "Foto 2024-08-21 13 19 59.jpg"
-          
+          "Foto 2024-08-21 13 19 59.jpg",
         ],
       },
       {
         title: "Innan",
-        files: ["2.JPG", "4.JPG", "6.JPG"],
+        files: ["1.JPG", "2.JPG", "4.JPG", "6.JPG"],
       },
     ],
   },

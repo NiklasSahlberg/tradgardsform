@@ -34,7 +34,7 @@ export default function Footer() {
             />
           </Link>
           <p className="text-sm leading-relaxed">
-            Diplomerad trädgårdsdesigner och trädgårdsarkitekt i Stockholm.
+            Diplomerad trädgårdsdesigner i Stockholm.
             Fasta priser och kostnadsfria hembesök.
           </p>
           <p className="text-xs text-white/40">

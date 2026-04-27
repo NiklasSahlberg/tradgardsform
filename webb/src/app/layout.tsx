@@ -38,7 +38,7 @@ const schemaMarkup = {
   "@type": "LocalBusiness",
   name: "Trädgårdsform",
   description:
-    "Professionell trädgårdsdesign i Stockholm med fasta priser och kostnadsfria hembesök. Diplomerad trädgårdsdesigner och trädgårdsarkitekt.",
+    "Professionell trädgårdsdesign i Stockholm med fasta priser och kostnadsfria hembesök. Diplomerad trädgårdsdesigner.",
   url: "https://tradgardsform.se",
   telephone: "+46705686509",
   email: "info@tradgardsform.se",

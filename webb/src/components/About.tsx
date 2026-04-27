@@ -31,7 +31,7 @@ export default function About() {
             Susanne Andersson — <em>din trädgårdsdesigner i Stockholm</em>
           </h2>
           <p className="font-sans text-zinc-600 text-lg leading-relaxed">
-            Jag är diplomerad trädgårdsdesigner och trädgårdsarkitekt med lång
+            Jag är diplomerad trädgårdsdesigner med lång
             erfarenhet av trädgårdsdesign och en gedigen växtkunskap. Min styrka är
             framförallt engagemanget för att varje kund ska kunna uppnå sin trädgårdsdröm.
           </p>
