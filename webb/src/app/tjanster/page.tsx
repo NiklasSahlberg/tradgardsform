@@ -279,6 +279,7 @@ export default function TjansterPage() {
                   alts={galleryAlts}
                   contextLabel={service.title}
                   variant={galleryImages.length === 1 ? "single" : "grid"}
+                  interactive={false}
                   thumbnailObjectPosition={
                     service.id === "radgivning"
                       ? "object-[center_60%]"

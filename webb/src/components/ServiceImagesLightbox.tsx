@@ -20,6 +20,8 @@ type ServiceImagesLightboxProps = {
   variant: "single" | "grid";
   /** t.ex. `object-[center_62%]` för att visa lite lägre i bilden vid object-cover */
   thumbnailObjectPosition?: string;
+  /** false = bara visa bilder, ingen lightbox eller klick */
+  interactive?: boolean;
 };
 
 const ZOOM_MIN = 1;
@@ -51,6 +53,7 @@ export default function ServiceImagesLightbox({
   contextLabel,
   variant,
   thumbnailObjectPosition,
+  interactive = true,
 }: ServiceImagesLightboxProps) {
   const thumbObjectPos = thumbnailObjectPosition ?? "object-center";
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -291,69 +294,114 @@ export default function ServiceImagesLightbox({
     setLightboxPan({ x: 0, y: 0 });
   }, []);
 
-  const thumbButtonClass =
-    "block w-full cursor-zoom-in overflow-hidden rounded-xl ring-0 transition-shadow hover:ring-2 hover:ring-sage/50 focus-visible:outline focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 border-0 bg-transparent p-0 text-left max-sm:h-auto sm:h-full sm:min-h-0";
+  const thumbButtonClass = interactive
+    ? "block w-full cursor-zoom-in overflow-hidden rounded-xl ring-0 transition-shadow hover:ring-2 hover:ring-sage/50 focus-visible:outline focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 border-0 bg-transparent p-0 text-left max-sm:h-auto sm:h-full sm:min-h-0"
+    : "block w-full overflow-hidden rounded-xl border-0 bg-transparent p-0 text-left max-sm:h-auto sm:h-full sm:min-h-0";
 
   /** Naturlig höjd + hel bild på mobil; beskuren ruta från sm och uppåt */
   const thumbIntrinsicW = 1400;
   const thumbIntrinsicH = 1000;
 
+  const singleThumbClass = interactive
+    ? "max-sm:relative max-sm:inset-auto max-sm:block max-sm:min-h-[200px] max-sm:w-full cursor-zoom-in border-0 bg-transparent p-0 transition-opacity hover:opacity-95 focus-visible:outline focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 sm:absolute sm:inset-0"
+    : "max-sm:relative max-sm:inset-auto max-sm:block max-sm:min-h-[200px] max-sm:w-full border-0 bg-transparent p-0 sm:absolute sm:inset-0";
+
   return (
     <>
       {variant === "single" ? (
-        <button
-          type="button"
-          onClick={() => setOpenIndex(0)}
-          className="max-sm:relative max-sm:inset-auto max-sm:block max-sm:min-h-[200px] max-sm:w-full cursor-zoom-in border-0 bg-transparent p-0 transition-opacity hover:opacity-95 focus-visible:outline focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 sm:absolute sm:inset-0"
-          aria-label={`${alts[0] ?? contextLabel} — visa i helskärm`}
-        >
-          <Image
-            src={images[0]}
-            alt={alts[0] ?? contextLabel}
-            width={thumbIntrinsicW}
-            height={thumbIntrinsicH}
-            className={`bg-sand/40 object-contain sm:hidden h-auto w-full ${thumbObjectPos}`}
-            sizes="100vw"
-          />
-          <Image
-            src={images[0]}
-            alt={alts[0] ?? contextLabel}
-            fill
-            className={`hidden object-cover sm:block ${thumbObjectPos}`}
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </button>
+        interactive ? (
+          <button
+            type="button"
+            onClick={() => setOpenIndex(0)}
+            className={singleThumbClass}
+            aria-label={`${alts[0] ?? contextLabel} — visa i helskärm`}
+          >
+            <Image
+              src={images[0]}
+              alt={alts[0] ?? contextLabel}
+              width={thumbIntrinsicW}
+              height={thumbIntrinsicH}
+              className={`bg-sand/40 object-contain sm:hidden h-auto w-full ${thumbObjectPos}`}
+              sizes="100vw"
+            />
+            <Image
+              src={images[0]}
+              alt={alts[0] ?? contextLabel}
+              fill
+              className={`hidden object-cover sm:block ${thumbObjectPos}`}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </button>
+        ) : (
+          <div className={singleThumbClass}>
+            <Image
+              src={images[0]}
+              alt={alts[0] ?? contextLabel}
+              width={thumbIntrinsicW}
+              height={thumbIntrinsicH}
+              className={`bg-sand/40 object-contain sm:hidden h-auto w-full ${thumbObjectPos}`}
+              sizes="100vw"
+            />
+            <Image
+              src={images[0]}
+              alt={alts[0] ?? contextLabel}
+              fill
+              className={`hidden object-cover sm:block ${thumbObjectPos}`}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        )
       ) : (
         <div className="grid h-full w-full max-sm:h-auto grid-cols-1 gap-2 sm:grid-cols-2">
-          {images.map((src, i) => (
-            <button
-              key={src}
-              type="button"
-              onClick={() => setOpenIndex(i)}
-              className={`relative min-w-0 ${thumbButtonClass}`}
-              aria-label={`${alts[i] ?? contextLabel} — visa i helskärm`}
-            >
-              <Image
-                src={src}
-                alt={alts[i] ?? contextLabel}
-                width={thumbIntrinsicW}
-                height={thumbIntrinsicH}
-                className="bg-sand/40 object-contain sm:hidden h-auto w-full"
-                sizes="100vw"
-              />
-              <Image
-                src={src}
-                alt={alts[i] ?? contextLabel}
-                fill
-                className="hidden object-cover object-center sm:block"
-                sizes="(max-width: 639px) 100vw, 50vw"
-              />
-            </button>
-          ))}
+          {images.map((src, i) =>
+            interactive ? (
+              <button
+                key={src}
+                type="button"
+                onClick={() => setOpenIndex(i)}
+                className={`relative min-w-0 ${thumbButtonClass}`}
+                aria-label={`${alts[i] ?? contextLabel} — visa i helskärm`}
+              >
+                <Image
+                  src={src}
+                  alt={alts[i] ?? contextLabel}
+                  width={thumbIntrinsicW}
+                  height={thumbIntrinsicH}
+                  className="bg-sand/40 object-contain sm:hidden h-auto w-full"
+                  sizes="100vw"
+                />
+                <Image
+                  src={src}
+                  alt={alts[i] ?? contextLabel}
+                  fill
+                  className="hidden object-cover object-center sm:block"
+                  sizes="(max-width: 639px) 100vw, 50vw"
+                />
+              </button>
+            ) : (
+              <div key={src} className={`relative min-w-0 ${thumbButtonClass}`}>
+                <Image
+                  src={src}
+                  alt={alts[i] ?? contextLabel}
+                  width={thumbIntrinsicW}
+                  height={thumbIntrinsicH}
+                  className="bg-sand/40 object-contain sm:hidden h-auto w-full"
+                  sizes="100vw"
+                />
+                <Image
+                  src={src}
+                  alt={alts[i] ?? contextLabel}
+                  fill
+                  className="hidden object-cover object-center sm:block"
+                  sizes="(max-width: 639px) 100vw, 50vw"
+                />
+              </div>
+            )
+          )}
         </div>
       )}
 
-      {openIndex !== null && (
+      {interactive && openIndex !== null && (
         <div
           className="fixed inset-0 z-[200] flex flex-col bg-black/28 backdrop-blur-sm"
           role="dialog"
