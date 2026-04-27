@@ -77,7 +77,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Vallentuna",
     section: "villa",
     description:
-      "Tomten kändes öppen mot grannar men saknade insynskydd och en naturlig plats att sitta. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol.",
+      "Tomten kändes öppen mot grannar och insynskydd sankades. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol.",
     previewFile: "vallentuna-preview.png",
     gallerySections: [
       {
@@ -144,7 +144,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Costa Tropical",
     section: "villa",
     description:
-      "Trädgård till nybyggt hus vid Medelhavets strand. Stora gröna växter skapar fin balans mot uteplatsernas, hårda material. Även belysningsplan ingick i uppdraget",
+      "Trädgård till nybyggt hus vid Medelhavets strand. Stora gröna växter skapar fin balans mot uteplatsernas hårda material. Även belysningsplan ingick i uppdraget.",
     previewFile: "costa-tropical-preview.png",
     gallerySections: [
       {
@@ -174,7 +174,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Djurhamn Värmdö",
     section: "villa",
     description:
-      "Skärgårdsmiljö med salt vind och mager jord krävde tåliga växter och robusta material. Vi föreslog en mer öppen trädgård mot vattnet med vindskyddande buskage och en altan som följer husets linjer.",
+      "Skärgårdsmiljö med salt vind och mager jord krävde tåliga växter och robusta material. Vi föreslog en mer öppen trädgård mot vattnet och en altan som följer husets linjer.",
     previewFile: "efter.jpg",
     gallerySections: [
       {
@@ -317,7 +317,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Brf St Eriksgatan",
     section: "brf",
     description:
-      "En total förändring krävdes då takbjälkslag skulle bytas, vackra, blickfång, sittplatser, belysning och funktioner skapades med fin balans för alla boende.",
+      "En total förändring krävdes då takbjälkslag skulle bytas. Vackra blickfång, sittplatser, belysning och funktioner skapades med fin balans för alla boende.",
     previewFile: "IMG_0215.JPG",
     gallerySections: [
       {

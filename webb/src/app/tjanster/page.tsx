@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
 import { Check, ArrowRight, Phone, MapPin, Gift, Building2, Lightbulb, Wifi } from "lucide-react";
 import ServiceImagesLightbox from "@/components/ServiceImagesLightbox";
 
@@ -127,8 +128,15 @@ const services = [
   },
 ];
 
-const extras = [
+const extras: {
+  anchorId?: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  cta: string;
+}[] = [
   {
+    anchorId: "distansradgivning",
     icon: Wifi,
     title: "Trädgårdsplanering på distans",
     description:
@@ -136,6 +144,7 @@ const extras = [
     cta: "Kontakta oss för pris",
   },
   {
+    anchorId: "belysningsplan",
     icon: Lightbulb,
     title: "Belysningsplan",
     description:
@@ -143,6 +152,7 @@ const extras = [
     cta: "Kontakta oss för pris",
   },
   {
+    anchorId: "bostadsrattsforeningar",
     icon: Building2,
     title: "Bostadsrättsföreningar",
     description:
@@ -150,6 +160,7 @@ const extras = [
     cta: "Kontakta oss",
   },
   {
+    anchorId: "presentkort",
     icon: Gift,
     title: "Presentkort",
     description:
@@ -236,7 +247,7 @@ export default function TjansterPage() {
             <div
               key={service.id}
               id={service.id}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 lg:gap-y-8 lg:items-stretch ${
+              className={`scroll-mt-28 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 lg:gap-y-8 lg:items-stretch ${
                 i > 0
                   ? "border-t-2 border-sand-dark pt-12 md:border-t-0 md:pt-0"
                   : ""
@@ -372,7 +383,10 @@ export default function TjansterPage() {
             {extras.map((extra) => (
               <div
                 key={extra.title}
-                className="bg-cream rounded-2xl p-7 flex flex-col gap-4 shadow-sm border border-sand-dark hover:shadow-md transition-shadow"
+                id={extra.anchorId}
+                className={`bg-cream rounded-2xl p-7 flex flex-col gap-4 shadow-sm border border-sand-dark hover:shadow-md transition-shadow ${
+                  extra.anchorId ? "scroll-mt-28" : ""
+                }`}
               >
                 <div className="w-11 h-11 rounded-full bg-sage/10 flex items-center justify-center">
                   <extra.icon size={20} className="text-sage" />

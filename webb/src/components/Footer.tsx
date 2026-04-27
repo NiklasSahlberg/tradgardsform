@@ -11,11 +11,11 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { href: "/tjanster/tradgardsplanering", label: "Trädgårdsplanering" },
-  { href: "/tjanster/belysningsplan", label: "Belysningsplan" },
-  { href: "/tjanster/distansradgivning", label: "Distansrådgivning" },
-  { href: "/tradgardsdesign-stockholm", label: "Trädgårdsdesign Stockholm" },
-  { href: "/tradgardsdesign-jarfalla", label: "Trädgårdsdesign Järfälla" },
+  { href: "/tjanster#radgivning", label: "Trädgårdsrådgivning" },
+  { href: "/tjanster#ideskiss-vaxt", label: "Idéskiss med växtförslag" },
+  { href: "/tjanster#komplett", label: "Komplett planering" },
+  { href: "/tjanster#belysningsplan", label: "Belysningsplan" },
+  { href: "/tjanster#distansradgivning", label: "Distansrådgivning" },
 ];
 
 export default function Footer() {
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-medium mb-4 tracking-wide">Tjänster & orter</h4>
+          <h4 className="text-white font-medium mb-4 tracking-wide">Tjänster</h4>
           <ul className="flex flex-col gap-2">
             {serviceLinks.map((link) => (
               <li key={link.href}>
