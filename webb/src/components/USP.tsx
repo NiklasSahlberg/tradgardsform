@@ -17,7 +17,7 @@ const usps = [
     icon: Calendar,
     title: "Fungerande trädgård",
     description:
-      "Vi reder ut hela familjens behov och skapar en trädgård som är vacker, praktisk och hållbar år efter år.",
+      "Vi reder ut hela familjens behov och skapar en trädgård som är vacker, praktisk och hållbar år efter år. Din trädgård är en del av ditt hem.",
   },
 ];
 
