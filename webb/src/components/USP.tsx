@@ -9,7 +9,7 @@ const usps = [
   },
   {
     icon: Home,
-    title: "Kostnadsfritt hembesök i Stockholm",
+    title: "Kostnadsfritt hembesök i Stockholm norrort",
     description:
       "Vi träffas i din trädgård i Stockholm för ett förutsättningslöst möte — utan kostnad inom Stockholm norrort. Först efter besöket bestämmer du hur du vill gå vidare.",
   },

@@ -172,7 +172,7 @@ export default function BokaHembesokPage() {
                 </button>
 
                 <p className="font-sans text-xs text-zinc-400 text-center">
-                  Kostnadsfritt hembesök inom Stockholm. Vi svarar inom 1–2 arbetsdagar.
+                  Kostnadsfritt hembesök inom Stockholm norrort. Vi svarar inom 1–2 arbetsdagar.
                 </p>
               </form>
             </>
