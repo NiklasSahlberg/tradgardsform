@@ -27,7 +27,7 @@ export const PROJECT_SECTIONS: Record<
   },
 };
 
-/** Dela galleri i rubriker (t.ex. Nu / Innan). Filnamn som i gallerimappen. */
+/** Dela galleri i rubriker (t.ex. Nu / Innan). Filnamn under gallerimappen, eller absolut sökväg från webbroten (t.ex. `/bilder/3 före.JPG`). */
 export type ProjectGallerySectionFiles = {
   title: string;
   files: string[];
@@ -64,6 +64,8 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "4b.jpg",
           "6a.jpg",
           "Foto 2024-08-21 13 19 59.jpg",
+          "/bilder/taby_nu1.jpg",
+          "/bilder/taby_nu2.jpg",
         ],
       },
       {
@@ -77,7 +79,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Vallentuna",
     section: "villa",
     description:
-      "Tomten kändes öppen mot grannar och insynskydd saknades. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol.",
+      "Tomten till det nybyggda huset kändes öppet mot grannar och insynsskydd saknades. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol. Även markbeläggning planerades in.",
     previewFile: "vallentuna-preview.png",
     gallerySections: [
       {
@@ -91,6 +93,10 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "IMG_1574.JPG",
           "IMG_1582.JPG",
         ],
+      },
+      {
+        title: "Innan",
+        files: ["/bilder/vallentuna_innan2.JPG", "/bilder/vallentuna_innan.JPG"],
       },
     ],
   },
@@ -167,6 +173,14 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "IMG_6628.jpg",
         ],
       },
+      {
+        title: "Innan",
+        files: [
+          "/bilder/IMG_8319.JPEG",
+          "/bilder/IMG_2182.jpeg",
+          "/bilder/IMG_9876.jpeg",
+        ],
+      },
     ],
   },
   {
@@ -198,7 +212,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     title: "Skälby Järfälla",
     section: "villa",
     description:
-      "Kunden önskade mindre gräsmatta och mer blomning från tidig vår till sen höst. Rabatterna fick tydliga färgteman och bevattningen förenklades med täckbark och väl valda perenner och buskar.",
+      "Passande trädgård till nybyggt hus. Uppdraget var en lättskött trädgård med flera blickfång och där händelserna avlöser varandra över året. Familjen önskade bekväma uteplatser för umgänge och avkoppling.",
     gallerySections: [
       {
         title: "Nu",
@@ -214,6 +228,10 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "IMG_1337.JPG",
           "IMG_1348.JPG",
         ],
+      },
+      {
+        title: "Innan",
+        files: ["/bilder/3 före.JPG", "/bilder/9 före.JPG"],
       },
     ],
   },
@@ -408,22 +426,24 @@ export type ProjectGallerySectionResolved = {
 };
 
 /**
- * Bygger sektioner med fulla bild-URL:er. Hoppar över filer som saknas i manifestet.
- * Returnerar null om projektet saknar gallerySections.
+ * Bygger sektioner med fulla bild-URL:er.
+ * Vanligt: filnamn i `public/bilder/galleri/<projektmapp>/`.
+ * Om en post börjar med `/` används den som publik URL (t.ex. bild i `public/bilder/`).
  */
 export function buildGallerySections(
   project: ProjectLocationConfig
 ): ProjectGallerySectionResolved[] | null {
   if (!project.gallerySections?.length) return null;
-  const known = galleryFilesForFolder(project.folder);
+  const resolve = (f: string) => {
+    if (f.startsWith("/")) {
+      const parts = f.split("/").filter(Boolean);
+      return `/${parts.map(encodeURIComponent).join("/")}`;
+    }
+    return `/bilder/galleri/${encodeURIComponent(project.folder)}/${encodeURIComponent(f)}`;
+  };
   const resolved = project.gallerySections.map((sec) => ({
     title: sec.title,
-    images: sec.files
-      .filter((f) => known.includes(f))
-      .map(
-        (f) =>
-          `/bilder/galleri/${encodeURIComponent(project.folder)}/${encodeURIComponent(f)}`
-      ),
+    images: sec.files.map(resolve),
   }));
   const nonEmpty = resolved.filter((s) => s.images.length > 0);
   return nonEmpty.length > 0 ? nonEmpty : null;

@@ -12,10 +12,8 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   galleryDimsForPublicUrl,
-  galleryFileFromPublicUrl,
-  galleryOrientationFromManifest,
+  galleryExplicitPortraitAspect,
   galleryOrisForUrls,
-  PORTRAIT_ASPECT_THRESHOLD,
 } from "@/lib/galleryManifest";
 import {
   packGalleryRows,
@@ -207,12 +205,15 @@ function DesktopThumbCell({
   }
 
   const dims = galleryDimsForPublicUrl(galleryFolder, src);
+  const explicitAspect = galleryExplicitPortraitAspect(src, galleryFolder);
   const portraitAspectStyle =
-    portraitRowMaxHOverW != null
-      ? ({ aspectRatio: `1 / ${portraitRowMaxHOverW}` } as const)
-      : dims != null
-        ? ({ aspectRatio: `${dims.w} / ${dims.h}` } as const)
-        : ({ aspectRatio: "3 / 4" } as const);
+    explicitAspect != null
+      ? ({ aspectRatio: explicitAspect } as const)
+      : portraitRowMaxHOverW != null
+        ? ({ aspectRatio: `1 / ${portraitRowMaxHOverW}` } as const)
+        : dims != null
+          ? ({ aspectRatio: `${dims.w} / ${dims.h}` } as const)
+          : ({ aspectRatio: "3 / 4" } as const);
 
   return (
     <div className={`col-span-12 ${colClass}`}>
@@ -267,12 +268,11 @@ function MobileThumbnail({
     );
   }
 
-  const loc = galleryFileFromPublicUrl(src);
-  const dims = galleryDimsForPublicUrl(galleryFolder, src);
   const isP =
-    loc != null
-      ? (galleryOrientationFromManifest(loc.folder, loc.file) ?? "L") === "P"
-      : dims != null && dims.h / dims.w >= PORTRAIT_ASPECT_THRESHOLD;
+    galleryOrisForUrls([src], galleryFolder)[0] === "P";
+
+  const dims = galleryDimsForPublicUrl(galleryFolder, src);
+  const explicitAspect = galleryExplicitPortraitAspect(src, galleryFolder);
 
   const alt =
     sectionTitle !== undefined
@@ -288,11 +288,13 @@ function MobileThumbnail({
     "shadow-sm ring-1 ring-sand-dark/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage";
 
   const portraitAspectStyle =
-    isP && dims != null
-      ? ({ aspectRatio: `${dims.w} / ${dims.h}` } as const)
-      : undefined;
+    isP && explicitAspect != null
+      ? ({ aspectRatio: explicitAspect } as const)
+      : isP && dims != null
+        ? ({ aspectRatio: `${dims.w} / ${dims.h}` } as const)
+        : undefined;
   const portraitAspectClass =
-    isP && dims == null ? "aspect-[3/4]" : "";
+    isP && explicitAspect == null && dims == null ? "aspect-[3/4]" : "";
 
   if (isP) {
     return (
