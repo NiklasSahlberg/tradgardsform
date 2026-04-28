@@ -76,7 +76,7 @@ const services = [
       "Leverans via e-post",
     ],
     forWho: "Passar dig som vill ha en gedigen växtplan utöver formgivningen.",
-    image: "/bilder/Ideskiss-Trad-buskar-Perenner-3-1024x724.jpg",
+    image: "/bilder/ideskiss_med_forslag_blurred.png",
     highlight: false,
   },
   {
@@ -96,10 +96,10 @@ const services = [
       "Leverans via e-post",
     ],
     forWho: "Passar dig som ska anlita en anläggare och behöver ett professionellt underlag.",
-    image: "/bilder/Belysningsförslag.jpg",
+    image: "/bilder/belysningsförslag_blurred.png",
     images: [
-      "/bilder/Belysningsförslag.jpg",
-      "/bilder/material%20exempel.jpg",
+      "/bilder/belysningsförslag_blurred.png",
+      "/bilder/material_exempel_blurred.png",
     ],
     highlight: true,
   },
@@ -290,7 +290,6 @@ export default function TjansterPage() {
                   alts={galleryAlts}
                   contextLabel={service.title}
                   variant={galleryImages.length === 1 ? "single" : "grid"}
-                  interactive={false}
                   thumbnailObjectPosition={
                     service.id === "radgivning"
                       ? "object-[center_60%]"

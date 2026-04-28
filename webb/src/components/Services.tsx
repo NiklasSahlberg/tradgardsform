@@ -19,13 +19,7 @@ const services = [
     image: "/bilder/Ideskiss-Trad-buskar-Perenner-3-1024x724.jpg",
   },
   {
-    title: "Idéskiss med växtförslag",
-    price: "24 800",
-    description:
-      "Som idéskiss, plus detaljerade växtförslag med svenska artnamn. Sittplatser, gångar, spaljéer och pergola finns inritade.",
-    features: ["Rum & funktioner", "Växtförslag med artnamn", "Förhandsskiss med revidering"],
-    highlight: false,
-    image: "/bilder/Forhandsritning-2-1024x724.jpg",
+    image: "/bilder/ideskiss_med_forslag_blurred.png",
   },
   {
     title: "Basritning",
