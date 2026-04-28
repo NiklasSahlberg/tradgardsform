@@ -2,7 +2,7 @@
 
 export type GalleryOri = "L" | "P";
 
-export type PackedGalleryItem = { index: number; span: 3 | 4 | 6 };
+export type PackedGalleryItem = { index: number; span: 3 | 4 | 6 | 12 };
 
 /**
  * Packar bildindex i rader om 12 kolumner så att:

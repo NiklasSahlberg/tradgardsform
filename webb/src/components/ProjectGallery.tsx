@@ -32,6 +32,8 @@ type ProjectGalleryProps = {
   galleryFolder: string;
   /** Alla miniatyrer i samma 4:3-ruta (t.ex. Enebyberg). */
   uniformGalleryCells?: boolean;
+  /** Sektionstitlar där sista miniatyren på desktop görs fullbredd (12 kolumner). */
+  galleryWideLastImageSectionTitles?: readonly string[];
   images?: string[];
   sections?: ProjectGallerySection[];
 };
@@ -120,11 +122,13 @@ function DesktopThumbCell({
   onOpen,
 }: DesktopThumbCellProps) {
   const colClass =
-    span === 3
-      ? "sm:col-span-3"
-      : span === 4
-        ? "sm:col-span-4"
-        : "sm:col-span-6";
+    span === 12
+      ? "sm:col-span-12"
+      : span === 3
+        ? "sm:col-span-3"
+        : span === 4
+          ? "sm:col-span-4"
+          : "sm:col-span-6";
 
   const alt =
     sectionTitle !== undefined
@@ -229,7 +233,7 @@ function DesktopThumbCell({
           alt={alt}
           fill
           className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
-          sizes={SIZES_DESK_NARROW}
+          sizes={span === 12 ? SIZES_DESK_LAND : SIZES_DESK_NARROW}
         />
       </button>
     </div>
@@ -341,6 +345,8 @@ type DesktopGalleryRowsProps = {
   projectTitle: string;
   sectionTitle?: string;
   uniformCells?: boolean;
+  /** Sista miniatyren på egen rad i full bredd (12 kolumner). */
+  wideLastImage?: boolean;
   onOpen: (globalIndex: number) => void;
 };
 
@@ -351,6 +357,7 @@ function DesktopGalleryRows({
   projectTitle,
   sectionTitle,
   uniformCells = false,
+  wideLastImage = false,
   onOpen,
 }: DesktopGalleryRowsProps) {
   if (urls.length === 0) return null;
@@ -377,7 +384,12 @@ function DesktopGalleryRows({
     () => galleryOrisForUrls(urls, galleryFolder),
     [urls, galleryFolder]
   );
-  const rows = useMemo(() => packGalleryRows(oris), [oris]);
+  const rows = useMemo(() => {
+    if (!wideLastImage || urls.length === 0) return packGalleryRows(oris);
+    if (urls.length === 1) return [[{ index: 0, span: 12 as const }]];
+    const headRows = packGalleryRows(oris.slice(0, -1));
+    return [...headRows, [{ index: urls.length - 1, span: 12 as const }]];
+  }, [oris, urls.length, wideLastImage]);
 
   return (
     <div className="hidden sm:flex flex-col gap-6 lg:gap-8">
@@ -456,6 +468,7 @@ export default function ProjectGallery({
   projectTitle,
   galleryFolder,
   uniformGalleryCells = false,
+  galleryWideLastImageSectionTitles,
 }: ProjectGalleryProps) {
   const flatImages =
     sections && sections.length > 0
@@ -593,6 +606,9 @@ export default function ProjectGallery({
                   projectTitle={projectTitle}
                   sectionTitle={sec.title}
                   uniformCells={uniformGalleryCells}
+                  wideLastImage={Boolean(
+                    galleryWideLastImageSectionTitles?.includes(sec.title)
+                  )}
                   onOpen={setOpenIndex}
                 />
               </div>

@@ -44,6 +44,11 @@ export type ProjectLocationConfig = {
   gallerySections?: ProjectGallerySectionFiles[];
   /** Alla miniatyrer i samma 4:3-ruta (ingen blandning av smala/breda kolumner) */
   galleryUniformCells?: boolean;
+  /**
+   * Sektionstitlar där sista bilden på desktop visas i full bredd (12 kolumner),
+   * övriga bilder packas som vanligt.
+   */
+  galleryWideLastImageSectionTitles?: readonly string[];
 };
 
 /** `description` visas på startsidan (projektsektion) och på respektive projektsida. */
@@ -232,6 +237,50 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
       {
         title: "Innan",
         files: ["/bilder/3 före.JPG", "/bilder/9 före.JPG"],
+      },
+    ],
+  },
+  {
+    folder: "80-tal",
+    title: "80-tals villa",
+    section: "villa",
+    description:
+      "Äldre villa från 80-talet behövde uppgraderas med ny entré. Det vackra berget togs fram. Ny entrétrappa med granitblock och stödmur av gabioner.",
+    previewFile: "1a Nu.JPG",
+    gallerySections: [
+      {
+        title: "Nu",
+        files: ["1 nu.JPG", "1a Nu.JPG", "1b Nu.JPG"],
+      },
+      {
+        title: "Innan",
+        files: ["2 INNAN.JPG", "INNAN.JPG"],
+      },
+    ],
+  },
+  {
+    folder: "60-tal",
+    title: "60-tals villa",
+    section: "villa",
+    description:
+      "Trädgårdsdesign för villa från sextiotalet — med fokus på funktion, rum och växtlighet som passar hus och tomt.",
+    previewFile: "bild nu (3).JPG",
+    gallerySections: [
+      {
+        title: "Nu",
+        files: [
+          "bild nu (3).JPG",
+          "bild nu (2).JPG",
+          "bild nu (8).JPG",
+          "bild nu (4).JPG",
+          "bild nu (5).jpg",
+          "bild nu (6).JPG",
+          "bild nu (1).jpg",
+        ],
+      },
+      {
+        title: "Innan",
+        files: ["INNAN (1).JPG"],
       },
     ],
   },

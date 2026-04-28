@@ -85,6 +85,9 @@ export default async function ProjectDetailPage({ params }: Props) {
             galleryFolder={project.folder}
             projectTitle={project.title}
             uniformGalleryCells={project.galleryUniformCells}
+            galleryWideLastImageSectionTitles={
+              project.galleryWideLastImageSectionTitles
+            }
             {...(gallerySections
               ? { sections: gallerySections }
               : { images })}

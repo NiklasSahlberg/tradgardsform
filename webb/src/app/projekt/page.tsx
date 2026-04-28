@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Projekt & referenser | Trädgårdsform Stockholm",
   description:
-    "Se utvalda trädgårdsprojekt från Täby, Vallentuna, Enebyberg, Silverdal, Costa Tropical, Djurhamn i Värmdö, Skälby i Järfälla och utvalda BRF-uppdrag i Stockholm — trädgårdsdesign av Trädgårdsform.",
+    "Se utvalda trädgårdsprojekt från Täby, Vallentuna, Enebyberg, Silverdal, Costa Tropical, Djurhamn i Värmdö, Skälby i Järfälla, 80-tals villa, 60-tals villa och utvalda BRF-uppdrag i Stockholm — trädgårdsdesign av Trädgårdsform.",
 };
 
 type ProjectCardProps = {
