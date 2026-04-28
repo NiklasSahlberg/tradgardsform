@@ -218,6 +218,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     section: "villa",
     description:
       "Passande trädgård till nybyggt hus. Uppdraget var en lättskött trädgård med flera blickfång och där händelserna avlöser varandra över året. Familjen önskade bekväma uteplatser för umgänge och avkoppling.",
+    previewFile: "IMG_1332.JPG",
     gallerySections: [
       {
         title: "Nu",
