@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import ContactMapSection from "@/components/ContactMapSection";
 
 export const metadata: Metadata = {
   title: "Kontakta oss | Trädgårdsform Stockholm",
@@ -39,6 +40,7 @@ const contactInfo = [
 ];
 
 const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(ADDRESS_LINE)}&hl=sv&z=16&output=embed`;
+const mapOpenUrl = `https://maps.google.com/maps?q=${encodeURIComponent(ADDRESS_LINE)}&hl=sv&z=16`;
 
 export default function KontaktPage() {
   return (
@@ -195,14 +197,9 @@ export default function KontaktPage() {
             </p>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-sand-dark/30 h-72 md:h-80">
-            <iframe
-              src={mapEmbedSrc}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+            <ContactMapSection
+              embedSrc={mapEmbedSrc}
+              mapUrl={mapOpenUrl}
               title={`Trädgårdsform — ${ADDRESS_LINE}`}
             />
           </div>

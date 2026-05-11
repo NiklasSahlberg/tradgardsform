@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import FooterServiceLinks from "@/components/FooterServiceLinks";
+import CookieFooterControls from "@/components/CookieFooterControls";
 
 const navLinks = [
   { href: "/", label: "Hem" },
@@ -86,9 +87,12 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10 px-6 lg:px-8 py-6">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/30">
-          <p>© {new Date().getFullYear()} Trädgårdsform. Alla rättigheter förbehållna.</p>
-          <p>Org.nr: 559191-1705</p>
+        <div className="max-w-7xl mx-auto flex flex-col gap-4 sm:flex-row items-center justify-between text-xs text-white/30">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+            <p>© {new Date().getFullYear()} Trädgårdsform. Alla rättigheter förbehållna.</p>
+            <p>Org.nr: 559191-1705</p>
+          </div>
+          <CookieFooterControls />
         </div>
       </div>
     </footer>
