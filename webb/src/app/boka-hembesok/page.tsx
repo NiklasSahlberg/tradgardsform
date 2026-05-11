@@ -10,6 +10,7 @@ const inputClass =
 export default function BokaHembesokPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -26,10 +27,32 @@ export default function BokaHembesokPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+      };
+      if (!res.ok) {
+        setSubmitError(
+          data.error ||
+            "Något gick fel vid sändning. Försök igen eller mejla info@tradgardsform.se."
+        );
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Kunde inte nå servern. Kontrollera anslutningen eller ring 0705-68 65 09."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -162,6 +185,15 @@ export default function BokaHembesokPage() {
                     className={`${inputClass} resize-none`}
                   />
                 </div>
+
+                {submitError ? (
+                  <p
+                    className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 font-sans text-sm text-red-800"
+                    role="alert"
+                  >
+                    {submitError}
+                  </p>
+                ) : null}
 
                 <button
                   type="submit"
