@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { CheckCircle, ArrowLeft } from "lucide-react";
 import { fireGoogleAdsConversion } from "@/lib/googleAds";
@@ -12,6 +12,7 @@ export default function BokaHembesokPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const thankYouRef = useRef<HTMLDivElement>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -57,6 +58,18 @@ export default function BokaHembesokPage() {
     }
   };
 
+  useEffect(() => {
+    if (!submitted) return;
+    const t = window.setTimeout(() => {
+      thankYouRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      thankYouRef.current?.focus({ preventScroll: true });
+    }, 50);
+    return () => window.clearTimeout(t);
+  }, [submitted]);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Tillbaka-länk */}
@@ -74,7 +87,11 @@ export default function BokaHembesokPage() {
       <div className="flex-1 flex items-start justify-center px-6 pb-20">
         <div className="w-full max-w-2xl">
           {submitted ? (
-            <div className="flex flex-col items-center text-center gap-6 py-20">
+            <div
+              ref={thankYouRef}
+              tabIndex={-1}
+              className="flex flex-col items-center text-center gap-6 py-12 sm:py-20 scroll-mt-28 outline-none"
+            >
               <div className="w-20 h-20 rounded-full bg-sage/10 flex items-center justify-center">
                 <CheckCircle size={40} className="text-sage" />
               </div>
