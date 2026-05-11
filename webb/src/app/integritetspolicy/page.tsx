@@ -59,10 +59,13 @@ export default function IntegritetspolicyPage() {
             </p>
             <p className="leading-relaxed">
               Om du väljer &quot;Acceptera alla&quot; kan vi visa en inbäddad
-              karta från Google (Google Maps) på kontaktsidan. Google kan då
-              sätta egna cookies enligt deras villkor — därför frågar vi om
-              samtycke först. Väljer du endast nödvändiga cookies visas en länk
-              till Google Maps i stället för inbäddning.
+              karta från Google (Google Maps) på kontaktsidan och ladda Google
+              tag (gtag) för att registrera när någon skickar
+              intresseanmälan — för mätning av annonskonverteringar i Google
+              Ads. Google kan sätta cookies enligt deras villkor — därför
+              frågar vi om samtycke först. Väljer du endast nödvändiga cookies
+              visas en länk till Google Maps i stället för inbäddning, och
+              annonsmätning aktiveras inte.
             </p>
           </section>
 

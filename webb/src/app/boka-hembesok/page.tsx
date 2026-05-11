@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle, ArrowLeft } from "lucide-react";
+import { fireGoogleAdsConversion } from "@/lib/googleAds";
 
 const inputClass =
   "w-full px-4 py-3 rounded-xl border border-sand-dark bg-zinc-50 font-sans text-base sm:text-sm text-zinc-800 placeholder:text-zinc-400 placeholder:text-base sm:placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-sage/40 focus:border-sage transition";
@@ -46,6 +47,7 @@ export default function BokaHembesokPage() {
         return;
       }
       setSubmitted(true);
+      fireGoogleAdsConversion();
     } catch {
       setSubmitError(
         "Kunde inte nå servern. Kontrollera anslutningen eller ring 0705-68 65 09."

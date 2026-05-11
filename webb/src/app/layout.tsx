@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import GoogleAdsLoader from "@/components/GoogleAdsLoader";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <CookieBanner />
+        <GoogleAdsLoader />
       </body>
     </html>
   );

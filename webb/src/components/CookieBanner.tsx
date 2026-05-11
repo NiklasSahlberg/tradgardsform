@@ -59,7 +59,8 @@ export default function CookieBanner() {
           >
             Vi använder nödvändiga cookies för att webbplatsen ska fungera och
             för att komma ihåg ditt val. Om du godkänner alla cookies kan vi
-            visa inbäddad karta från Google på kontaktsidan. Läs mer i{" "}
+            visa inbäddad karta från Google på kontaktsidan och använda Googles
+            tagg för att mäta annonskonverteringar. Läs mer i{" "}
             <Link
               href="/integritetspolicy"
               className="font-medium text-sage underline underline-offset-2 hover:text-forest"
