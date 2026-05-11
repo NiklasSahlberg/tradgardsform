@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CheckCircle, ArrowLeft } from "lucide-react";
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl border border-sand-dark bg-zinc-50 font-sans text-sm text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-sage/40 focus:border-sage transition";
+  "w-full px-4 py-3 rounded-xl border border-sand-dark bg-zinc-50 font-sans text-base sm:text-sm text-zinc-800 placeholder:text-zinc-400 placeholder:text-base sm:placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-sage/40 focus:border-sage transition";
 
 export default function BokaHembesokPage() {
   const [submitted, setSubmitted] = useState(false);
