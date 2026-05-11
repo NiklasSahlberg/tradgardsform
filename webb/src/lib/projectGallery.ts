@@ -235,7 +235,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
           "IMG_1348.JPG",
         ],
       },
-      {
+      { 
         title: "Innan",
         files: ["/bilder/3 före.JPG", "/bilder/9 före.JPG"],
       },
