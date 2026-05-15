@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
 
+  /** Undviker Vercel Image Optimization-kvot (Hobby). Bilder levereras direkt från /public. */
+  images: {
+    unoptimized: true,
+  },
+
   /** Gammal sida → startsida */
   async redirects() {
     return [
