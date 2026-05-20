@@ -8,6 +8,7 @@ import {
   getPreviewImageForFolder,
   locationSlug,
 } from "@/lib/projectGallery";
+import { featuredProjectCardAlt } from "@/lib/imageAlt";
 
 function buildFeaturedCards() {
   return HOME_FEATURED_PROJECT_FOLDERS.map((folderName) => {
@@ -18,7 +19,7 @@ function buildFeaturedCards() {
       "/bilder/ny-hero.webp";
     const href = `/projekt/${locationSlug(project.folder)}`;
     const tag = PROJECT_SECTIONS[project.section].label;
-    const alt = `${project.title} — trädgårdsprojekt av Trädgårdsform`;
+    const alt = featuredProjectCardAlt(project.title);
     return { project, src, href, tag, alt };
   }).filter((x): x is NonNullable<typeof x> => x !== null);
 }

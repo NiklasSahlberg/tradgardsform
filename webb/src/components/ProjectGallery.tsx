@@ -20,6 +20,10 @@ import {
   type GalleryOri,
   type PackedGalleryItem,
 } from "@/lib/packGalleryRows";
+import {
+  projectGalleryAriaOpenLabel,
+  projectGalleryImageAlt,
+} from "@/lib/imageAlt";
 
 export type ProjectGallerySection = {
   title: string;
@@ -63,15 +67,15 @@ function UniformGridThumb({
   onOpen,
   sizes,
 }: UniformGridThumbProps) {
-  const alt =
-    sectionTitle !== undefined
-      ? `${projectTitle} — ${sectionTitle}, bild ${globalIndex + 1}`
-      : `${projectTitle} — bild ${globalIndex + 1}`;
-
-  const ariaLabel =
-    sectionTitle !== undefined
-      ? `Visa bild ${globalIndex + 1} i helskärm (${sectionTitle})`
-      : `Visa bild ${globalIndex + 1} i helskärm`;
+  const alt = projectGalleryImageAlt(
+    projectTitle,
+    globalIndex + 1,
+    sectionTitle
+  );
+  const ariaLabel = projectGalleryAriaOpenLabel(
+    sectionTitle,
+    globalIndex + 1
+  );
 
   const baseRing =
     "shadow-sm ring-1 ring-sand-dark/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage";
@@ -130,15 +134,15 @@ function DesktopThumbCell({
           ? "sm:col-span-4"
           : "sm:col-span-6";
 
-  const alt =
-    sectionTitle !== undefined
-      ? `${projectTitle} — ${sectionTitle}, bild ${globalIndex + 1}`
-      : `${projectTitle} — bild ${globalIndex + 1}`;
-
-  const ariaLabel =
-    sectionTitle !== undefined
-      ? `Visa bild ${globalIndex + 1} i helskärm (${sectionTitle})`
-      : `Visa bild ${globalIndex + 1} i helskärm`;
+  const alt = projectGalleryImageAlt(
+    projectTitle,
+    globalIndex + 1,
+    sectionTitle
+  );
+  const ariaLabel = projectGalleryAriaOpenLabel(
+    sectionTitle,
+    globalIndex + 1
+  );
 
   const baseRing =
     "shadow-sm ring-1 ring-sand-dark/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage";
@@ -278,15 +282,15 @@ function MobileThumbnail({
   const dims = galleryDimsForPublicUrl(galleryFolder, src);
   const explicitAspect = galleryExplicitPortraitAspect(src, galleryFolder);
 
-  const alt =
-    sectionTitle !== undefined
-      ? `${projectTitle} — ${sectionTitle}, bild ${globalIndex + 1}`
-      : `${projectTitle} — bild ${globalIndex + 1}`;
-
-  const ariaLabel =
-    sectionTitle !== undefined
-      ? `Visa bild ${globalIndex + 1} i helskärm (${sectionTitle})`
-      : `Visa bild ${globalIndex + 1} i helskärm`;
+  const alt = projectGalleryImageAlt(
+    projectTitle,
+    globalIndex + 1,
+    sectionTitle
+  );
+  const ariaLabel = projectGalleryAriaOpenLabel(
+    sectionTitle,
+    globalIndex + 1
+  );
 
   const baseRing =
     "shadow-sm ring-1 ring-sand-dark/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage";
@@ -470,10 +474,25 @@ export default function ProjectGallery({
   uniformGalleryCells = false,
   galleryWideLastImageSectionTitles,
 }: ProjectGalleryProps) {
-  const flatImages =
-    sections && sections.length > 0
-      ? sections.flatMap((s) => s.images)
-      : images;
+  const flatImages = useMemo(
+    () =>
+      sections && sections.length > 0
+        ? sections.flatMap((s) => s.images)
+        : images,
+    [sections, images]
+  );
+
+  /** Parallell med `flatImages` när galleriet har sektioner (samma flatten-ordning). */
+  const flatSectionTitleByImageIndex = useMemo(() => {
+    if (!sections?.length) return null;
+    const out: string[] = [];
+    for (const s of sections) {
+      for (let i = 0; i < s.images.length; i++) {
+        out.push(s.title);
+      }
+    }
+    return out;
+  }, [sections]);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -709,7 +728,11 @@ export default function ProjectGallery({
                 >
                   <Image
                     src={flatImages[openIndex]}
-                    alt={`${projectTitle} — bild ${openIndex + 1}`}
+                    alt={projectGalleryImageAlt(
+                      projectTitle,
+                      openIndex + 1,
+                      flatSectionTitleByImageIndex?.[openIndex],
+                    )}
                     width={lightboxW}
                     height={lightboxH}
                     className="max-h-[calc(100vh-8rem)] w-auto max-w-full object-contain md:max-h-[calc(100vh-6rem)]"

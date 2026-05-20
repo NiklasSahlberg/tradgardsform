@@ -9,6 +9,10 @@ import {
   getPreviewImageForFolder,
   locationSlug,
 } from "@/lib/projectGallery";
+import {
+  projectListingPageHeroAlt,
+  projectPreviewCardAlt,
+} from "@/lib/imageAlt";
 
 export const metadata: Metadata = {
   title: "Projekt & referenser | Trädgårdsform Stockholm",
@@ -33,7 +37,7 @@ function ProjectCard({ title, slug, description, preview }: ProjectCardProps) {
         {preview ? (
           <Image
             src={preview}
-            alt={`${title} — förhandsbild`}
+            alt={projectPreviewCardAlt(title)}
             fill
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -89,7 +93,7 @@ export default function ProjektPage() {
       <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage}
-          alt="Trädgårdsdesign — utvalda projekt av Trädgårdsform"
+          alt={projectListingPageHeroAlt()}
           fill
           priority
           className="object-cover object-center"

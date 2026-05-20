@@ -12,6 +12,7 @@ import {
   getProjectBySlug,
   locationSlug,
 } from "@/lib/projectGallery";
+import { projectDetailHeroAlt } from "@/lib/imageAlt";
 
 export function generateStaticParams() {
   return PROJECT_LOCATIONS.map((p) => ({
@@ -50,7 +51,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section className="relative min-h-[45vh] md:min-h-[50vh] flex flex-col justify-end overflow-hidden pt-28 pb-10 md:pb-14 px-6">
         <Image
           src={heroSrc}
-          alt=""
+          alt={projectDetailHeroAlt(project.title)}
           fill
           priority
           className="object-cover object-center"
