@@ -85,7 +85,7 @@ export default function ProjektPage() {
   })).filter((g) => g.items.length > 0);
 
   const heroImage =
-    projects.find((p) => p.preview)?.preview ?? "/bilder/ny-hero.webp";
+    projects.find((p) => p.preview)?.preview ?? "/bilder/opt/ny-hero.webp";
 
   return (
     <>

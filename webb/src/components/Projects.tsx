@@ -16,7 +16,7 @@ function buildFeaturedCards() {
     if (!project) return null;
     const src =
       getPreviewImageForFolder(project.folder, project.previewFile) ??
-      "/bilder/ny-hero.webp";
+      "/bilder/opt/ny-hero.webp";
     const href = `/projekt/${locationSlug(project.folder)}`;
     const tag = PROJECT_SECTIONS[project.section].label;
     const alt = featuredProjectCardAlt(project.title);

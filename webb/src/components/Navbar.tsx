@@ -6,8 +6,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
-const LOGO_ON_HERO = "/bilder/galleri/logo_web-removebg-preview.png";
-const LOGO_SCROLLED = "/bilder/galleri/logo_web.png";
+const LOGO_ON_HERO = "/bilder/galleri/logo_web-removebg-preview.webp";
+const LOGO_SCROLLED = "/bilder/galleri/logo_web.webp";
 
 const links = [
   { href: "/", label: "Hem" },

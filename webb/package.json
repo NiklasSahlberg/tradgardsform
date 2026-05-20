@@ -5,6 +5,7 @@
   "scripts": {
     "generate:gallery": "node scripts/generate-gallery-manifest.mjs",
     "prebuild": "npm run generate:gallery",
+    "optimize:images": "node scripts/optimize-public-images.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

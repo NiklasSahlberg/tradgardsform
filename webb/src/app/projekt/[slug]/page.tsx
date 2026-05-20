@@ -43,7 +43,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const gallerySections = buildGallerySections(project);
   const heroSrc =
     getPreviewImageForFolder(project.folder, project.previewFile) ??
-    "/bilder/ny-hero.webp";
+    "/bilder/opt/ny-hero.webp";
 
   return (
     <>

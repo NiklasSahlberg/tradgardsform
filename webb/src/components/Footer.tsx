@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="flex flex-col gap-5">
           <Link href="/" className="inline-flex w-fit">
             <Image
-              src="/bilder/galleri/logo_web-removebg-preview.png"
+              src="/bilder/galleri/logo_web-removebg-preview.webp"
               alt="Trädgårdsform logotyp"
               width={220}
               height={79}

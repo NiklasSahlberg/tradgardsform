@@ -85,7 +85,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     section: "villa",
     description:
       "Tomten till det nybyggda huset kändes öppet mot grannar och insynsskydd saknades. Efter omplanering fick familjen en mer ombonad känsla med häckar, perenner och en avskild sittgrupp i kvällssol. Även markbeläggning planerades in.",
-    previewFile: "vallentuna-preview.png",
+    previewFile: "vallentuna-preview.webp",
     gallerySections: [
       {
         title: "Nu",
@@ -111,7 +111,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     section: "villa",
     description:
       "Uppdraget handlade om att skapa en enhetlig trädgård kring ett hus från sjuttiotalet. Nya gångar i natursten, uppdaterade planteringar och en tydlig entré gjorde stor skillnad utan att tumma på den gröna karaktären.",
-    previewFile: "enebyberg-preview.png",
+    previewFile: "enebyberg-preview.webp",
     galleryUniformCells: true,
     gallerySections: [
       {
@@ -135,7 +135,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     section: "villa",
     description:
       "Här var uppdraget att ersätta gräsmattan med sittplats och växtlighet där händelserna avlöser varandra över hela året.",
-    previewFile: "silverdal-preview.png",
+    previewFile: "silverdal-preview.webp",
     gallerySections: [
       {
         title: "Nu",
@@ -156,7 +156,7 @@ export const PROJECT_LOCATIONS: ProjectLocationConfig[] = [
     section: "villa",
     description:
       "Trädgård till nybyggt hus vid Medelhavets strand. Stora gröna växter skapar fin balans mot uteplatsernas hårda material. Även belysningsplan ingick i uppdraget.",
-    previewFile: "costa-tropical-preview.png",
+    previewFile: "costa-tropical-preview.webp",
     gallerySections: [
       {
         title: "Nu",
